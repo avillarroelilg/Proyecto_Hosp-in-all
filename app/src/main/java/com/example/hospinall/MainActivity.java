@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
 //batery and fix screen
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         registerReceiver(LowBatteryReceiver, new IntentFilter(Intent.ACTION_BATTERY_LOW));
-// #####
+
 
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

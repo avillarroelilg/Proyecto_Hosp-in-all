@@ -9,7 +9,6 @@ public class AlarmasMedic {
     private String time;
 
     public AlarmasMedic() {
-
     }
 
     public String getNom_tablet() {
