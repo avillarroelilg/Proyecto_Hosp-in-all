@@ -62,7 +62,6 @@ public class MainActivity extends AppCompatActivity {
 
     Context context;
 
-
     String tabletName;
     String username;
     String idDevice;
@@ -79,20 +78,18 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         alarmasMedic = new AlarmasMedic();
         deviceManager = new DeviceManager();
         batteryWarnings = new BatteryWarnings();
-        //XAMPP
+
+        //Conexió amb XAMPP
         db_action = new webdb();
         Context context = getApplicationContext();
         db_action.pruebas(context);
 
-//batery and fix screen
+        //Intent de la bateria i fixació de la orientació
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         registerReceiver(LowBatteryReceiver, new IntentFilter(Intent.ACTION_BATTERY_LOW));
-
-
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
@@ -112,9 +109,14 @@ public class MainActivity extends AppCompatActivity {
         subheaderText = (TextView) header.findViewById(R.id.navHeaderSub);
         prefs = this.getSharedPreferences("com.example.newentry", Context.MODE_PRIVATE);
         prefs.edit().putString("loggedIn", "notLogged").apply();
-
         context = this;
     }
+
+    /**
+     * Cambia el estado en el que se encuentra el dispositivo
+     *
+     * @param status Estado del dispositivo
+     */
 
     public void changeStatus(String status) {
         SharedPreferences prefs = this.getSharedPreferences(
@@ -143,8 +145,6 @@ public class MainActivity extends AppCompatActivity {
         deviceManager.setBattery_lvl(percentage);
         deviceManager.setDevice_charger(batteryConnected);
         CheckingBattery(percentage);
-
-
         reffDevices.setValue(deviceManager);
     }
 
@@ -155,8 +155,8 @@ public class MainActivity extends AppCompatActivity {
         Menu menu = navigationView.getMenu();
         SharedPreferences prefs = this.getSharedPreferences(
                 "com.example.newentry", Context.MODE_PRIVATE);
-        String user = prefs.getString("loggedIn","notLogged");
-        if (user.equals("notLogged")){
+        String user = prefs.getString("loggedIn", "notLogged");
+        if (user.equals("notLogged")) {
             menu.findItem(R.id.nav_home).setVisible(false);
             menu.findItem(R.id.nav_send).setVisible(false);
             menu.findItem(R.id.nav_share).setVisible(false);
@@ -189,7 +189,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        if (!isAppInLockTaskMode()){
+        if (!isAppInLockTaskMode()) {
             startLockTask();
         }
     }
@@ -201,7 +201,7 @@ public class MainActivity extends AppCompatActivity {
         // If the screen is off then the device has been locked
         PowerManager powerManager = (PowerManager) getSystemService(POWER_SERVICE);
         boolean isScreenOn;
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT_WATCH) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT_WATCH) {
             isScreenOn = powerManager.isInteractive();
         } else {
             isScreenOn = powerManager.isScreenOn();
@@ -212,6 +212,11 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
+
+    /**
+     * El método comprueba el nivel de batería cuando baja del 30%
+     * @param battPercentage El porcentaje de batería
+     */
 
     public void CheckingBattery(int battPercentage) {
         if (battPercentage <= 30) {
@@ -228,17 +233,23 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
+    /**
+     * Selecciona la imagen del perfil dependiendo en el usuario
+     */
     public void setImageView() {
-        String mDrawableName = prefs.getString("ActiveUser","def");
+        String mDrawableName = prefs.getString("ActiveUser", "def");
         int resID = Resources.getSystem().getIdentifier(mDrawableName, "drawable", "android");
         imageView.setImageResource(resID);
         headerText.setText(mDrawableName);
         subheaderText.setText(mDrawableName.toLowerCase());
     }
+
+    /**
+     * Elimina la imagen del perfil cuando se hace un log-out
+     */
     public static void removeImageView() {
         imageView.setImageResource(R.mipmap.ic_launcher);
-        headerText.setText(prefs.getString("ActiveUser","def"));
+        headerText.setText(prefs.getString("ActiveUser", "def"));
         subheaderText.setText("");
     }
 
@@ -262,9 +273,10 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-    public void lockEscape(View view) {
-    }
-
+    /**
+     * El método sirve para comprobar si la pantalla está fijada
+     * @return
+     */
     public boolean isAppInLockTaskMode() {
         ActivityManager activityManager;
 
