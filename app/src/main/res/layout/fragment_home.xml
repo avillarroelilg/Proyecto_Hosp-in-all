@@ -35,7 +35,7 @@
                 android:layout_marginRight="15dp"
                 android:layout_weight="1"
                 android:background="@drawable/round_red"
-                android:text="Rojo" />
+                android:text="Red" />
 
 
             <Button
@@ -45,7 +45,7 @@
                 android:layout_marginLeft="15dp"
                 android:layout_weight="1"
                 android:background="@drawable/round_blue"
-                android:text="Azul" />
+                android:text="Blue" />
 
         </LinearLayout>
 
@@ -64,7 +64,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/round_yellow"
                 android:radius="30dp"
-                android:text="Amarillo" />
+                android:text="Yellow" />
 
 
             <Button
@@ -74,7 +74,7 @@
                 android:layout_marginLeft="15dp"
                 android:layout_weight="1"
                 android:background="@drawable/round_green"
-                android:text="Verde" />
+                android:text="Green" />
 
         </LinearLayout>
 

@@ -2,32 +2,32 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     android:keepScreenOn="true">
     <!--https://developer.android.com/guide/topics/ui/settings -->
-    <PreferenceCategory android:title="Configuración de usuario y database">
+    <PreferenceCategory android:title="User and database's configuration">
 
         <EditTextPreference
             android:defaultValue="jdbc:jtds:sqlserver://192.168.10.104/"
             android:key="url_db"
             android:selectAllOnFocus="true"
             android:singleLine="true"
-            android:title="Url de la database" />
+            android:title="Database's URL" />
         <EditTextPreference
             android:defaultValue="000000"
             android:key="tabletID"
             android:selectAllOnFocus="true"
             android:singleLine="true"
-            android:title="ID del disposiivo" />
+            android:title="Device's ID" />
         <EditTextPreference
             android:defaultValue="Tablet1"
             android:key="tabletName"
             android:selectAllOnFocus="true"
             android:singleLine="true"
-            android:title="Nombre del dispositivo" />
+            android:title="Device's name" />
         <EditTextPreference
             android:defaultValue="databaseName"
             android:key="name_db"
             android:selectAllOnFocus="true"
             android:singleLine="true"
-            android:title="Nombre de la database" />
+            android:title="Database's name" />
 
 
 
