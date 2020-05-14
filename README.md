@@ -1,2 +1,2 @@
-# Proyecto_Hosp-in-all
-proyecto final ,modulo 13 esta pensada como ampliación de la app que estamos desarrollando en la FCT
+# Project Hosp-in-all
+Final project, module 13.
