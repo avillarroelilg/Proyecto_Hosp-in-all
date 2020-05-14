@@ -11,12 +11,12 @@
     <string name="menu_home">Send Alarm</string>
     <string name="menu_gallery">Log In</string>
     <string name="menu_slideshow">Slideshow</string>
-    <string name="menu_tools">Configuration</string>
+    <string name="menu_tools">Settings</string>
     <string name="menu_share">Generate ID Hex</string>
     <string name="menu_send">Active Alarms</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="configuracion_actual"><b><i>Current Configuration</i></b></string>
+    <string name="configuracion_actual"><b><i>Current settings</i></b></string>
     <string name="nombre_de_usuario"><b>Username</b></string>
     <string name="contrase_a"><b>Password</b></string>
     <string name="id_dispositivo_hexadecimal"><b><i>Hexadecimal device ID</i></b></string>
