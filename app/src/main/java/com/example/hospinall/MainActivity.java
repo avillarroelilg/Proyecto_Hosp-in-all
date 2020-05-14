@@ -82,12 +82,12 @@ public class MainActivity extends AppCompatActivity {
         deviceManager = new DeviceManager();
         batteryWarnings = new BatteryWarnings();
 
-        //Conexió amb XAMPP
+        //XAMPP connection
         db_action = new webdb();
         Context context = getApplicationContext();
         db_action.pruebas(context);
 
-        //Intent de la bateria i fixació de la orientació
+        //Battery intent and screen pin
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         registerReceiver(LowBatteryReceiver, new IntentFilter(Intent.ACTION_BATTERY_LOW));
 
@@ -113,9 +113,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Cambia el estado en el que se encuentra el dispositivo
+     * Changes the device's status
      *
-     * @param status Estado del dispositivo
+     * @param status Device's status
      */
 
     public void changeStatus(String status) {
@@ -151,7 +151,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-        changeStatus("Aplicación Abierta");
+        changeStatus("Open App");
         Menu menu = navigationView.getMenu();
         SharedPreferences prefs = this.getSharedPreferences(
                 "com.example.newentry", Context.MODE_PRIVATE);
@@ -174,7 +174,7 @@ public class MainActivity extends AppCompatActivity {
     public void onStop() {
         super.onStop();
 
-        changeStatus("Aplicación Pausada");
+        changeStatus("Paused App");
         db_action.update_entry_d("onStop");
 
 
@@ -214,8 +214,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * El método comprueba el nivel de batería cuando baja del 30%
-     * @param battPercentage El porcentaje de batería
+     * Checks when battery goes below 30%
+     * @param battPercentage Battery Percentage
      */
 
     public void CheckingBattery(int battPercentage) {
@@ -234,7 +234,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Selecciona la imagen del perfil dependiendo en el usuario
+     * Pics a profile picture depending on the type of user
      */
     public void setImageView() {
         String mDrawableName = prefs.getString("ActiveUser", "def");
@@ -245,7 +245,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Elimina la imagen del perfil cuando se hace un log-out
+     * Eliminates the profile picture when logging out
      */
     public static void removeImageView() {
         imageView.setImageResource(R.mipmap.ic_launcher);
@@ -274,7 +274,7 @@ public class MainActivity extends AppCompatActivity {
     };
 
     /**
-     * El método sirve para comprobar si la pantalla está fijada
+     * The method checks if the app is in Lock Task mode
      * @return
      */
     public boolean isAppInLockTaskMode() {

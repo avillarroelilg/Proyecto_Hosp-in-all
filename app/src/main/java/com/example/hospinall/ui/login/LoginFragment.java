@@ -54,7 +54,7 @@ public class LoginFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_gallery, container, false);
         // View main = inflater.inflate(R.layout.content_main, container, false);
         nombre = root.findViewById(R.id.edit_username);
-        userImage = root.findViewById(R.id.imageView);
+       // userImage = root.findViewById(R.id.imageView);
         // navigationView = main.findViewById(R.id.nav_view);
         navigationView = Objects.requireNonNull(getActivity()).findViewById(R.id.nav_view);
         contrasenya = root.findViewById(R.id.edit_passwordUser);
@@ -102,7 +102,7 @@ public class LoginFragment extends Fragment {
                     }
                 }
                 if (!correctUser) {
-                    Toast.makeText(getContext(), "Nombre de usuario inexistente", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), "Wrong username", Toast.LENGTH_LONG).show();
                 } else {
                     reff.child(userName).addValueEventListener(new ValueEventListener() {
                         @Override
@@ -110,7 +110,7 @@ public class LoginFragment extends Fragment {
                             passwordDB = Objects.requireNonNull(dataSnapshot.child("password").getValue()).toString();
 
                             if (passwordDB.equals(contrasenya.getText().toString())) {
-                                Toast.makeText(getContext(), "Log-In completado !", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getContext(), "Log-In complete !", Toast.LENGTH_LONG).show();
                                 SharedPreferences.Editor editor = prefs.edit();
                                 editor.putString("ActiveUser", userName);
                                 editor.apply();
@@ -120,7 +120,7 @@ public class LoginFragment extends Fragment {
                                 mainActivity.setImageView();
                                 prefs.edit().putString("loggedIn", "logged").apply();
                                 Menu menu = navigationView.getMenu();
-                                if (userName.equals("Admin")) {
+                                if (userName.contains("Admin")) {
                                     menu.findItem(R.id.nav_home).setVisible(true);
                                     menu.findItem(R.id.nav_send).setVisible(true);
                                     menu.findItem(R.id.nav_share).setVisible(true);
@@ -136,7 +136,7 @@ public class LoginFragment extends Fragment {
                                 nombre.setEnabled(false);
                                 contrasenya.setEnabled(false);
                             } else {
-                                Toast.makeText(getContext(), "Contraseña incorrecta", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getContext(), "Wrong password", Toast.LENGTH_LONG).show();
                             }
                         }
 
@@ -156,7 +156,7 @@ public class LoginFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 SharedPreferences.Editor editor = prefs.edit();
-                editor.putString("ActiveUser", "No Usuario");
+                editor.putString("ActiveUser", "No user");
                 editor.apply();
                 MainActivity.removeImageView();
                 nombre.getText().clear();

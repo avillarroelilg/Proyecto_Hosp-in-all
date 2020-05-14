@@ -79,14 +79,14 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     public void onStart() {
         super.onStart();
 
-        changeStatus("Aplicación Abierta");
+        changeStatus("Open App");
     }
 
     @Override
     public void onStop() {
         super.onStop();
 
-        changeStatus("Aplicación Abierta");
+        changeStatus("Open App");
 
     }
 
@@ -97,7 +97,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
                 Log.i("click", "el boton blue funciona");
                 sendWarningToFirebase("Alarma Azul");
-                Toast.makeText(getContext(), "Alarma azul enviada", Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), "Blue alarm sent", Toast.LENGTH_LONG).show();
                 db_action.update_entry("Azul");
 
                 break;
@@ -106,7 +106,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
                 Log.i("click", "el boton  green funciona");
                 sendWarningToFirebase("Alarma Verde");
-                Toast.makeText(getContext(), "Alarma verde enviada", Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), "Green alarm sent", Toast.LENGTH_LONG).show();
                 db_action.update_entry("Verde");
 
                 break;
@@ -116,7 +116,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 Log.i("click", "el boton yellow funciona");
                 sendWarningToFirebase("Alarma Amarilla");
 
-                Toast.makeText(getContext(), "Alarma amarilla enviada", Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), "Yellow alarm sent", Toast.LENGTH_LONG).show();
                 db_action.create_entry("Amarilla");
 
                 break;
@@ -126,13 +126,13 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 Log.i("click", "el boton red funciona");
                 sendWarningToFirebase("Alarma Roja");
 
-                Toast.makeText(getContext(), "Alarma roja enviada", Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), "Red alarm sent", Toast.LENGTH_LONG).show();
                 db_action.create_entry("Roja");
 
                 break;
 
             default:
-                Log.i("click", "id no registrado en onclick");
+                Log.i("click", "Unregistered ID");
 
 
         }
@@ -238,7 +238,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         //crea objeto device manager
         deviceManager.setDevice_charger(batteryConnected);
         deviceManager.setLast_check(timeDisplay());
-        deviceManager.setApp_status("Aplicación Abierta");
+        deviceManager.setApp_status("Open App");
         //stopLockTask();
 
         reffDevicesWar = FirebaseDatabase.getInstance().getReference().child("Other Warnings").child(tabletName);

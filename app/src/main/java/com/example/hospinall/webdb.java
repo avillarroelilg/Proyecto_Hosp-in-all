@@ -49,29 +49,29 @@ public class webdb extends AppCompatActivity {
     }
 
     public void read_entry( String typeWarning){
-        servicioWeb("read",typeWarning,false);
+        webService("read",typeWarning,false);
     }
 
     public void delete_entry( String typeWarning){
-        servicioWeb("delete",typeWarning,false);
+        webService("delete",typeWarning,false);
     }
 
     public void create_entry(String typeWarning){
-        servicioWeb("create",typeWarning,false);
+        webService("create",typeWarning,false);
     }
     public void create_entry_d(String state){
         status = state;
-        servicioWeb("createdevice","null",false);
+        webService("createdevice","null",false);
     }
     public void update_entry_d(String state){
         status = state;
-        servicioWeb("updatedevice","null",false);
+        webService("updatedevice","null",false);
     }
     public void update_entry(String typeWarning){
-        servicioWeb("update",typeWarning,true);
+        webService("update",typeWarning,true);
     }
 
-    private void servicioWeb(final String name_serv, String warning,Boolean attended) {
+    private void webService(final String name_serv, String warning, Boolean attended) {
 
         try {
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();

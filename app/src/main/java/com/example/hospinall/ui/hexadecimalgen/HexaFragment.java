@@ -45,12 +45,12 @@ public class HexaFragment extends Fragment implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.randomIDGen:
 
-                Log.i("click", "Hex Generado");
-                crearHexadecimal();
+                Log.i("click", "Hex value generated");
+                createHexadecimal();
                 break;
             case R.id.manualIDGen:
                 if (!hexadecimalCheck()) {
-                    Toast.makeText(getContext(), "El valor introducido no es hexadecimal !", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), "The inserted value isn't Hexadecimal !", Toast.LENGTH_LONG).show();
                 } else {
                     String contenido = cajaHex.getText().toString().toUpperCase();
                     if (contenido.length() == 4) {
@@ -62,24 +62,22 @@ public class HexaFragment extends Fragment implements View.OnClickListener {
                         cajaHex.getText().clear();
 
                     } else {
-                        Toast.makeText(getContext(), "El valor hexadecimal ha de ser de 4 carácteres !", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getContext(), "The Hexadecimal value must be 4 characters long !", Toast.LENGTH_LONG).show();
                     }
                 }
             default:
-                Log.i("click", "id no registrado en onclick");
+                Log.i("click", "Unregistered onclick");
                 break;
 
         }
     }
 
-    private void crearHexadecimal() {
+    private void createHexadecimal() {
         Random rand = new Random();
-        int myRandomNumber = rand.nextInt(0xfff) + 0xfff; // Generates a random number between 0x10 and 0x20
-        //System.out.printf("%x\n",myRandomNumber); // Prints it in hex, such as "0x14" or....
-        String result = Integer.toHexString(myRandomNumber); // Random hex number in result
+        int myRandomNumber = rand.nextInt(0xfff) + 0xfff;
+        String result = Integer.toHexString(myRandomNumber);
         result = result.toUpperCase();
         ID.setText(result);
-
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getContext());
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString("tabletID", result);

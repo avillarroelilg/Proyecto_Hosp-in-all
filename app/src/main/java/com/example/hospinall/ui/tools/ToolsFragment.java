@@ -56,7 +56,7 @@ public class ToolsFragment extends Fragment {
                 switch (v.getId()) {
                     case R.id.desfijar:
                         Objects.requireNonNull(getActivity()).stopLockTask();
-                        Toast.makeText(getContext(), "Aplicación desfijada", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getContext(), "Unpinned App", Toast.LENGTH_LONG).show();
                 }
             }
         });

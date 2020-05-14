@@ -8,6 +8,43 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:106507509775:android:733dbba9e2f46506af037a",
+        "android_client_info": {
+          "package_name": "com.example.hospinall"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "106507509775-0p5crj650r0jn04d00acvhqqujlp5m9l.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hospinall",
+            "certificate_hash": "0dccbd501629b03f1fb116ea31f0427f1de458b8"
+          }
+        },
+        {
+          "client_id": "106507509775-l412l3sn76uuaqkp7n611g27keolbbbt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvkmfxwKQV0aLwMWEYKbCtmMgWhzI3RZQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "106507509775-l412l3sn76uuaqkp7n611g27keolbbbt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:106507509775:android:88728b2dbaa6348caf037a",
         "android_client_info": {
           "package_name": "com.example.newentry"
