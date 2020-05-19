@@ -36,6 +36,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
     private HomeViewModel homeViewModel;
     DatabaseReference reff;
+    DatabaseReference reffActiveAlarms;
     DatabaseReference reffDevices;
     DatabaseReference reffDevicesWar;
 
@@ -227,6 +228,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         idDevice = sharedPreferences.getString("tabletID", "0");
         username = sharedPreferences.getString("ActiveUser", null);
         reff = FirebaseDatabase.getInstance().getReference().child(database).child(timeDisplayDay()).child("Log " + timeDisplayHours());
+        reffActiveAlarms = FirebaseDatabase.getInstance().getReference().child("Active Warnings").child("ID " + idDevice);
 
         //crea objeto alarma medica
         alarmasMedic.setNom_tablet(tabletName);
@@ -253,5 +255,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
         reffDevices.setValue(deviceManager);
         reff.setValue(alarmasMedic);
+        reffActiveAlarms.setValue(alarmasMedic);
     }
 }
