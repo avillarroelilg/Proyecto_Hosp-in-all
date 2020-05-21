@@ -54,7 +54,7 @@ public class LoginFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_gallery, container, false);
         // View main = inflater.inflate(R.layout.content_main, container, false);
         nombre = root.findViewById(R.id.edit_username);
-       // userImage = root.findViewById(R.id.imageView);
+        // userImage = root.findViewById(R.id.imageView);
         // navigationView = main.findViewById(R.id.nav_view);
         navigationView = Objects.requireNonNull(getActivity()).findViewById(R.id.nav_view);
         contrasenya = root.findViewById(R.id.edit_passwordUser);
@@ -123,6 +123,11 @@ public class LoginFragment extends Fragment {
                                 if (userName.contains("Admin")) {
                                     menu.findItem(R.id.nav_home).setVisible(true);
                                     menu.findItem(R.id.nav_send).setVisible(true);
+                                    menu.findItem(R.id.nav_share).setVisible(true);
+                                    menu.findItem(R.id.nav_tools).setVisible(true);
+                                } else if (userName.contains("Tech")) {
+                                    menu.findItem(R.id.nav_home).setVisible(false);
+                                    menu.findItem(R.id.nav_send).setVisible(false);
                                     menu.findItem(R.id.nav_share).setVisible(true);
                                     menu.findItem(R.id.nav_tools).setVisible(true);
                                 } else {
