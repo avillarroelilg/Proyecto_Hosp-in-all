@@ -96,8 +96,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.btn_blue:
 
-                Log.i("click", "el boton blue funciona");
-                sendWarningToFirebase("Alarma Azul");
+                Log.i("click", "Blue test");
+                sendWarningToFirebase("Blue Alarm");
                 Toast.makeText(getContext(), "Blue alarm sent", Toast.LENGTH_LONG).show();
                 db_action.update_entry("Azul");
 
@@ -105,8 +105,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
             case R.id.btn_green:
 
-                Log.i("click", "el boton  green funciona");
-                sendWarningToFirebase("Alarma Verde");
+                Log.i("click", "Green test");
+                sendWarningToFirebase("Green Alarm");
                 Toast.makeText(getContext(), "Green alarm sent", Toast.LENGTH_LONG).show();
                 db_action.update_entry("Verde");
 
@@ -114,8 +114,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
             case R.id.btn_yellow:
 
-                Log.i("click", "el boton yellow funciona");
-                sendWarningToFirebase("Alarma Amarilla");
+                Log.i("click", "Yellow test");
+                sendWarningToFirebase("Yellow Alarm");
 
                 Toast.makeText(getContext(), "Yellow alarm sent", Toast.LENGTH_LONG).show();
                 db_action.create_entry("Amarilla");
@@ -124,8 +124,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
             case R.id.btn_red:
 
-                Log.i("click", "el boton red funciona");
-                sendWarningToFirebase("Alarma Roja");
+                Log.i("click", "Red test");
+                sendWarningToFirebase("Red Alarm");
 
                 Toast.makeText(getContext(), "Red alarm sent", Toast.LENGTH_LONG).show();
                 db_action.create_entry("Roja");
