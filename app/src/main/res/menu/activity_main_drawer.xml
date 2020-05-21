@@ -15,7 +15,7 @@
             android:title="@string/menu_home" />
         <item
             android:id="@+id/nav_send"
-            android:icon="@drawable/alarm_bell_24dp"
+            android:icon="@drawable/alarm_bell_blue_24dp"
             android:title="@string/menu_send" />
 
         <item
@@ -35,7 +35,7 @@
 
             <item
                 android:id="@+id/nav_send"
-                android:icon="@drawable/alarm_bell_24dp"
+                android:icon="@drawable/alarm_bell_blue_24dp"
                 android:title="@string/menu_send" />
         </menu>
     </item>

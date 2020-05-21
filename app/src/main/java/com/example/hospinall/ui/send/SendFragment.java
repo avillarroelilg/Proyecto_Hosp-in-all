@@ -54,7 +54,7 @@ public class SendFragment extends Fragment {
 
         reff = FirebaseDatabase.getInstance().getReference().child("Active Warnings");
         // idTablet = (Objects.requireNonNull(reff.getKey())).substring((reff.getKey()).indexOf(' ') + 1);
-        List <String> testList = new ArrayList<>();
+        List<String> testList = new ArrayList<>();
         listaWarnings = new ArrayList<Warnings>();
 /*
         DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference().child("Warnings");
@@ -78,7 +78,7 @@ public class SendFragment extends Fragment {
         reff.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-            //    Toast.makeText(getContext(), "B1", Toast.LENGTH_LONG).show();
+                //    Toast.makeText(getContext(), "B1", Toast.LENGTH_LONG).show();
 
                 for (DataSnapshot snap : dataSnapshot.getChildren()) {
                     idList.add(snap.getKey());
@@ -89,7 +89,24 @@ public class SendFragment extends Fragment {
                 rvWarnings = (RecyclerView) root.findViewById(R.id.rvWarnings);
 
                 for (int i = 0; i < idList.size(); i++) {
-                    listaWarnings.add(new Warnings(R.drawable.alarm_bell_24dp, Objects.requireNonNull(dataSnapshot.child(idList.get(i)).child("tipo_Alarma").getValue()).toString(), idList.get(i), Objects.requireNonNull(dataSnapshot.child(idList.get(i)).child("time").getValue()).toString()));
+                    String alarmType = Objects.requireNonNull(dataSnapshot.child(idList.get(i)).child("tipo_Alarma").getValue()).toString();
+                    int alarmColor = 0;
+                    String time =  Objects.requireNonNull(dataSnapshot.child(idList.get(i)).child("time").getValue()).toString();
+                    switch (alarmType) {
+                        case "Blue Alarm":
+                            alarmColor = R.drawable.alarm_bell_blue_24dp;
+                            break;
+                        case "Green Alarm":
+                            alarmColor = R.drawable.alarm_bell_green_24dp;
+                            break;
+                        case "Yellow Alarm":
+                            alarmColor = R.drawable.alarm_bell_yellow_24dp;
+                            break;
+                        case "Red Alarm":
+                            alarmColor = R.drawable.alarm_bell_red_24dp;
+                            break;
+                    }
+                    listaWarnings.add(new Warnings(alarmColor, alarmType, idList.get(i),time));
 
                 }
 
@@ -127,7 +144,7 @@ public class SendFragment extends Fragment {
                 }
             });
         }
-       // Toast.makeText(getContext(), testList.get(0), Toast.LENGTH_LONG).show();
+        // Toast.makeText(getContext(), testList.get(0), Toast.LENGTH_LONG).show();
 
 
 
