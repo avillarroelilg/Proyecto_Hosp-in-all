@@ -33,6 +33,7 @@ public class AdapterWarning extends RecyclerView.Adapter<AdapterWarning.UsuarioV
         usuarioViewHolder.tvAlarmType.setText(listaWarnings.get(i).getAlarmType());
         usuarioViewHolder.tvDeviceID.setText(listaWarnings.get(i).getDeviceID());
         usuarioViewHolder.tvTime.setText(listaWarnings.get(i).getTime());
+        usuarioViewHolder.tvDescrip.setText(listaWarnings.get(i).getDescrip());
     }
 
     @Override
@@ -43,7 +44,7 @@ public class AdapterWarning extends RecyclerView.Adapter<AdapterWarning.UsuarioV
     public class UsuarioViewHolder extends RecyclerView.ViewHolder {
 
         ImageView ivIcon;
-        TextView tvAlarmType, tvDeviceID, tvTime;
+        TextView tvAlarmType, tvDeviceID, tvTime,tvDescrip;
 
         public UsuarioViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -51,6 +52,7 @@ public class AdapterWarning extends RecyclerView.Adapter<AdapterWarning.UsuarioV
             tvAlarmType = itemView.findViewById(R.id.tvAlarmType);
             tvDeviceID = itemView.findViewById(R.id.tvDeviceID);
             tvTime = itemView.findViewById(R.id.tvTime);
+            tvDescrip = itemView.findViewById(R.id.tvDescrip);
         }
     }
 }

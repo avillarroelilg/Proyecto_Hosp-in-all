@@ -6,12 +6,14 @@ public class Warnings {
     private String alarmType;
     private String deviceID;
     private String time;
+    private String descrip;
 
-    public Warnings(int icon, String alarmType, String deviceID, String time) {
+    public Warnings(int icon, String alarmType, String deviceID, String time, String descrip) {
         this.icon = icon;
         this.alarmType = alarmType;
         this.deviceID = deviceID;
         this.time = time;
+        this.descrip = descrip;
     }
 
     public int getIcon() {
@@ -44,5 +46,13 @@ public class Warnings {
 
     public void setTime(String time) {
         this.time = time;
+    }
+
+    public String getDescrip() {
+        return descrip;
+    }
+
+    public void setDescrip(String descrip) {
+        this.descrip = descrip;
     }
 }

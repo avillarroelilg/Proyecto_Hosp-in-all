@@ -7,6 +7,7 @@ public class AlarmasMedic {
     private String Nom_user;
     private String password_user;
     private String time;
+    private String description;
 
     public AlarmasMedic() {
     }
@@ -58,5 +59,13 @@ public class AlarmasMedic {
 
     public void setID_tablet(String ID_tablet) {
         this.ID_tablet = ID_tablet;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

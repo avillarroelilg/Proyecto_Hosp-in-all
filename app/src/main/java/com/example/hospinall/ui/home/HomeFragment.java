@@ -19,9 +19,11 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.example.hospinall.AlarmPopUp;
 import com.example.hospinall.AlarmasMedic;
 import com.example.hospinall.BatteryWarnings;
 import com.example.hospinall.DeviceManager;
+import com.example.hospinall.MainActivity;
 import com.example.hospinall.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -29,6 +31,7 @@ import com.example.hospinall.webdb;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Objects;
 
 import static android.content.Context.BATTERY_SERVICE;
 
@@ -79,8 +82,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onStart() {
         super.onStart();
-
         changeStatus("Open App");
+
+
     }
 
     @Override
@@ -93,21 +97,19 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
+        startActivity(new Intent(getContext(), AlarmPopUp.class));
+        SharedPreferences prefs = Objects.requireNonNull(getContext()).getSharedPreferences(
+                "com.example.newentry", Context.MODE_PRIVATE);
         switch (v.getId()) {
             case R.id.btn_blue:
-
                 Log.i("click", "Blue test");
-                sendWarningToFirebase("Blue Alarm");
-                Toast.makeText(getContext(), "Blue alarm sent", Toast.LENGTH_LONG).show();
+                prefs.edit().putString("alarmCodeColor", "Blue Alarm").apply();
                 db_action.update_entry("Azul");
-
                 break;
 
             case R.id.btn_green:
-
                 Log.i("click", "Green test");
-                sendWarningToFirebase("Green Alarm");
-                Toast.makeText(getContext(), "Green alarm sent", Toast.LENGTH_LONG).show();
+                prefs.edit().putString("alarmCodeColor", "Green Alarm").apply();
                 db_action.update_entry("Verde");
 
                 break;
@@ -115,9 +117,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             case R.id.btn_yellow:
 
                 Log.i("click", "Yellow test");
-                sendWarningToFirebase("Yellow Alarm");
-
-                Toast.makeText(getContext(), "Yellow alarm sent", Toast.LENGTH_LONG).show();
+                prefs.edit().putString("alarmCodeColor", "Yellow Alarm").apply();
                 db_action.create_entry("Amarilla");
 
                 break;
@@ -125,11 +125,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             case R.id.btn_red:
 
                 Log.i("click", "Red test");
-                sendWarningToFirebase("Red Alarm");
-
-                Toast.makeText(getContext(), "Red alarm sent", Toast.LENGTH_LONG).show();
+                prefs.edit().putString("alarmCodeColor", "Red Alarm").apply();
                 db_action.create_entry("Roja");
-
                 break;
 
             default:
