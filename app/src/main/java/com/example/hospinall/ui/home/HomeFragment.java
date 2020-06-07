@@ -157,6 +157,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         return currentDate;
     }
 
+    /**
+     * Checks the battery % of the user's device. If it is below or equal to 30%, a "Low battery" warning will be sent to the database.
+     * @param battPercentage The battery % of the device.
+     */
+
     public void CheckingBattery(int battPercentage) {
         if (battPercentage <= 30) {
             reffDevicesWar = FirebaseDatabase.getInstance().getReference().child("Other Warnings").child(tabletName);
@@ -172,6 +177,12 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         }
     }
 
+    /**
+     * Checks if the device is plugged.
+     * @param context Context
+     * @return If the device is plugged or not.
+     */
+
     public static boolean isPlugged(Context context) {
         boolean isPlugged = false;
         Intent intent = context.registerReceiver(null, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
@@ -182,6 +193,12 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         }
         return isPlugged;
     }
+
+    /**
+     * Changes the device's status between connected and disconnected, depending if the device is charging or not.
+     *
+     * @param status The device's status.
+     */
 
     public void changeStatus(String status) {
         SharedPreferences prefs = getContext().getSharedPreferences(
@@ -214,44 +231,4 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         reffDevices.setValue(deviceManager);
     }
 
-    private void sendWarningToFirebase(String typeOfWarning) {
-
-        SharedPreferences prefs = getContext().getSharedPreferences("com.example.newentry", Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-        String database = sharedPreferences.getString("name_db", "Database");
-        int actualBattery = prefs.getInt("percentageBattery", -1);
-        String batteryConnected = prefs.getString("chargerConnected", "defaultStringIfNothingFound");
-        tabletName = sharedPreferences.getString("tabletName", "Tablet B1");
-        idDevice = sharedPreferences.getString("tabletID", "0");
-        username = sharedPreferences.getString("ActiveUser", null);
-        reff = FirebaseDatabase.getInstance().getReference().child(database).child(timeDisplayDay()).child("Log " + timeDisplayHours());
-        reffActiveAlarms = FirebaseDatabase.getInstance().getReference().child("Active Warnings").child("ID " + idDevice);
-
-        //crea objeto alarma medica
-        alarmasMedic.setNom_tablet(tabletName);
-        alarmasMedic.setID_tablet(idDevice);
-        alarmasMedic.setTipo_Alarma(typeOfWarning);
-        alarmasMedic.setTime(timeDisplay());
-        alarmasMedic.setNom_user(username);
-
-        //crea objeto device manager
-        deviceManager.setDevice_charger(batteryConnected);
-        deviceManager.setLast_check(timeDisplay());
-        deviceManager.setApp_status("Open App");
-        //stopLockTask();
-
-        reffDevicesWar = FirebaseDatabase.getInstance().getReference().child("Other Warnings").child(tabletName);
-        reffDevicesWar.setValue(null);
-
-        BatteryManager bm = (BatteryManager) getActivity().getSystemService(BATTERY_SERVICE);
-        int percentage = bm.getIntProperty(BatteryManager.BATTERY_PROPERTY_CAPACITY);
-
-        CheckingBattery(percentage);
-
-        reffDevices = FirebaseDatabase.getInstance().getReference().child("Devices Status").child(tabletName);
-
-        reffDevices.setValue(deviceManager);
-        reff.setValue(alarmasMedic);
-        reffActiveAlarms.setValue(alarmasMedic);
-    }
 }

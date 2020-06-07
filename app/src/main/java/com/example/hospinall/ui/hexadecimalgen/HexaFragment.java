@@ -72,6 +72,10 @@ public class HexaFragment extends Fragment implements View.OnClickListener {
         }
     }
 
+    /**
+     * Generates a random Hexadecimal number.
+     */
+
     private void createHexadecimal() {
         Random rand = new Random();
         int myRandomNumber = rand.nextInt(0xfff) + 0xfff;
@@ -85,6 +89,10 @@ public class HexaFragment extends Fragment implements View.OnClickListener {
 
     }
 
+    /**
+     * Checks if the number given by the user is Hexadecimal.
+     * @return The number's Hexadecimal or not.
+     */
     private Boolean hexadecimalCheck() {
         String contenido = cajaHex.getText().toString();
         Boolean isHex;

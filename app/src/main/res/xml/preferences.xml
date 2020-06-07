@@ -11,19 +11,13 @@
             android:singleLine="true"
             android:title="Database's URL" />
         <EditTextPreference
-            android:defaultValue="000000"
-            android:key="tabletID"
-            android:selectAllOnFocus="true"
-            android:singleLine="true"
-            android:title="Device's ID" />
-        <EditTextPreference
-            android:defaultValue="Tablet1"
+            android:defaultValue="DefaultTabletName"
             android:key="tabletName"
             android:selectAllOnFocus="true"
             android:singleLine="true"
             android:title="Device's name" />
         <EditTextPreference
-            android:defaultValue="databaseName"
+            android:defaultValue="Hosp-in-all DB"
             android:key="name_db"
             android:selectAllOnFocus="true"
             android:singleLine="true"

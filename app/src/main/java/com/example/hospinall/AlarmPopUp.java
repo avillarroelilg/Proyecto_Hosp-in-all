@@ -76,6 +76,11 @@ public class AlarmPopUp extends AppCompatActivity implements View.OnClickListene
 
     }
 
+    /**
+     * This onClick method manages the options of the pop-up window when clicking a button.
+     * @param v View.
+     */
+
     @Override
     public void onClick(View v) {
         SharedPreferences prefs = this.getSharedPreferences(
@@ -98,6 +103,11 @@ public class AlarmPopUp extends AppCompatActivity implements View.OnClickListene
         }
     }
 
+    /**
+     * Sends the information of the clicked warning to the database.
+     * @param typeOfWarning The color of the sent warning.
+     * @param alarmCommentStr The optional comment on the reason from said button press or any extra information for the alarm.
+     */
     private void sendWarningToFirebase(String typeOfWarning,String alarmCommentStr) {
 
         SharedPreferences prefs = this.getSharedPreferences("com.example.newentry", Context.MODE_PRIVATE);
@@ -139,6 +149,11 @@ public class AlarmPopUp extends AppCompatActivity implements View.OnClickListene
         reff.setValue(alarmasMedic);
         reffActiveAlarms.setValue(alarmasMedic);
     }
+
+    /**
+     * Checks the battery % of the user's device. If it is below or equal to 30%, a "Low battery" warning will be sent to the database.
+     * @param battPercentage The battery % of the device.
+     */
 
     public void CheckingBattery(int battPercentage) {
         if (battPercentage <= 30) {

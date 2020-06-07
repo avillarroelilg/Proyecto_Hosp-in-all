@@ -56,25 +56,7 @@ public class SendFragment extends Fragment {
         // idTablet = (Objects.requireNonNull(reff.getKey())).substring((reff.getKey()).indexOf(' ') + 1);
         List<String> testList = new ArrayList<>();
         listaWarnings = new ArrayList<Warnings>();
-/*
-        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference().child("Warnings");
 
-        mDatabase.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Toast.makeText(getContext(), "A1", Toast.LENGTH_LONG).show();
-
-                for (DataSnapshot snap : dataSnapshot.getChildren()) {
-                    idList.add(snap.getKey());
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                Toast.makeText(getContext(), "A2", Toast.LENGTH_LONG).show();
-            }
-        });
-*/
         reff.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -145,12 +127,6 @@ public class SendFragment extends Fragment {
                 }
             });
         }
-        // Toast.makeText(getContext(), testList.get(0), Toast.LENGTH_LONG).show();
-
-
-
-      /*  mWebView.setWebViewClient(new WebViewClient());
-        mWebView.loadUrl("https://mail.google.com"); */
         return root;
     }
 

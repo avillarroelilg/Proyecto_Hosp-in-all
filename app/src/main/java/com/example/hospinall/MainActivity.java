@@ -89,7 +89,6 @@ public class MainActivity extends AppCompatActivity {
 
         //Battery intent and screen pin
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-        registerReceiver(LowBatteryReceiver, new IntentFilter(Intent.ACTION_BATTERY_LOW));
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
@@ -113,9 +112,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Changes the device's status
+     * Changes the device's status between connected and disconnected, depending if the device is charging or not.
      *
-     * @param status Device's status
+     * @param status The device's status.
      */
 
     public void changeStatus(String status) {
@@ -214,8 +213,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Checks when battery goes below 30%
-     * @param battPercentage Battery Percentage
+     * Checks the battery % of the user's device. If it is below or equal to 30%, a "Low battery" warning will be sent to the database.
+     * @param battPercentage The battery % of the device.
      */
 
     public void CheckingBattery(int battPercentage) {
@@ -234,8 +233,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Pics a profile picture depending on the type of user
+     * Sets the user's profile picture.
      */
+
     public void setImageView() {
         String mDrawableName = prefs.getString("ActiveUser", "def");
         int resID = Resources.getSystem().getIdentifier(mDrawableName, "drawable", "android");
@@ -245,7 +245,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Eliminates the profile picture when logging out
+     * Eliminates the user's profile picture when logging out.
      */
     public static void removeImageView() {
         imageView.setImageResource(R.mipmap.ic_launcher);
@@ -262,19 +262,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    // ########### old
-    private BroadcastReceiver LowBatteryReceiver = new BroadcastReceiver() {
-        @SuppressLint("MissingPermission")
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            Intent intent1 = new Intent(Intent.ACTION_CALL);
-            intent1.setData(Uri.parse("tel:122"));
-            startActivity(intent1);
-        }
-    };
-
     /**
-     * The method checks if the app is in Lock Task mode
+     * Checks if the app is in Lock Task mode
      * @return
      */
     public boolean isAppInLockTaskMode() {
