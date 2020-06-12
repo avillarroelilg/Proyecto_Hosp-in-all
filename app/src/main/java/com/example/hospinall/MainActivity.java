@@ -88,7 +88,8 @@ public class MainActivity extends AppCompatActivity {
         db_action.pruebas(context);
 
         //Battery intent and screen pin
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        //All is Horizontal
+        //setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);

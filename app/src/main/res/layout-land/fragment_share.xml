@@ -79,7 +79,7 @@
             android:id="@+id/randomIDGen"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Generate a\n random ID value" />
+            android:text="Generate a random ID value" />
 
         <Space
             android:layout_width="20dp"
@@ -89,7 +89,7 @@
             android:id="@+id/manualIDGen"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Manually add a\n new ID value" />
+            android:text="Manually add a new ID value" />
     </LinearLayout>
 
 </LinearLayout>
