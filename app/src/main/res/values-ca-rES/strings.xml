@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Hosp-in-all</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">No usuari</string>
+    <string name="nav_header_desc">Nav header</string>
+    <string name="action_settings">Configuració</string>
+    <string name="menu_home">Enviar Alarma</string>
+    <string name="menu_gallery">Iniciar Sessió</string>
+    <string name="menu_tools">Configuració</string>
+    <string name="menu_share">Generar ID Hex</string>
+    <string name="menu_send">Alarmes Actives</string>
+    <string name="configuracion_actual"><b><i>Configuració</i></b></string>
+    <string name="nombre_de_usuario"><b>Nom d\'usuari</b></string>
+    <string name="contrase_a"><b>Contraseña</b></string>
+    <string name="id_dispositivo_hexadecimal"><b><i>ID Hex del dispositiu</i></b></string>
+    <string name="addInfo">(Pots escriure qualsevol informació adicional aqui)</string>
+    <string name="name">Nom</string>
+    <string name="password">Contrasenya</string>
+    <string name="log_in">Iniciar sessió</string>
+    <string name="log_out">Tancar sessió</string>
+    <string name="red">Vermell</string>
+    <string name="blue">Blau</string>
+    <string name="yellow">Groc</string>
+    <string name="green">Verd</string>
+    <string name="insert_a_new_id">Insertar un ID</string>
+    <string name="generate_a_n_random_id_value">Generar un\n ID aleatori</string>
+    <string name="manually_add_a_n_new_id_value">Afegir manualment\n un nou ID</string>
+    <string name="id">ID :</string>
+    <string name="user">Usuari :</string>
+    <string name="device_s_name">Nombre dispositiu :</string>
+    <string name="device_s_id">ID dispositiu :</string>
+    <string name="database_s_name">Nom base de dades :</string>
+    <string name="url_database">URL base de dades :</string>
+    <string name="open_preferences">Obrir preferències</string>
+    <string name="unpin_screen">Desfixar pantalla</string>
+</resources>

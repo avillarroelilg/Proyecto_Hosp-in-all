@@ -21,5 +21,24 @@
     <string name="contrase_a"><b>Password</b></string>
     <string name="id_dispositivo_hexadecimal"><b><i>Hexadecimal device ID</i></b></string>
     <string name="addInfo">(You can write any additional information here)</string>
+    <string name="name">Name</string>
+    <string name="password">Password</string>
+    <string name="log_in">Log in</string>
+    <string name="log_out">Log out</string>
+    <string name="red">Red</string>
+    <string name="blue">Blue</string>
+    <string name="yellow">Yellow</string>
+    <string name="green">Green</string>
+    <string name="insert_a_new_id">Insert a new ID</string>
+    <string name="generate_a_n_random_id_value">Generate a\n random ID value</string>
+    <string name="manually_add_a_n_new_id_value">Manually add a\n new ID value</string>
+    <string name="id">ID :</string>
+    <string name="user">User :</string>
+    <string name="device_s_name">Device\'s name :</string>
+    <string name="device_s_id">Device\'s ID :</string>
+    <string name="database_s_name">Database\'s name :</string>
+    <string name="url_database">URL Database :</string>
+    <string name="open_preferences">Open preferences</string>
+    <string name="unpin_screen">Unpin screen</string>
 </resources>
 

@@ -34,7 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
-            android:text="ID : "
+            android:text="@string/id"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -62,7 +62,7 @@
             android:id="@+id/insertarID"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Insert a new ID" />
+            android:hint="@string/insert_a_new_id" />
     </LinearLayout>
 
     <Space
@@ -79,7 +79,7 @@
             android:id="@+id/randomIDGen"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Generate a random ID value" />
+            android:text="@string/generate_a_n_random_id_value" />
 
         <Space
             android:layout_width="20dp"
@@ -89,7 +89,7 @@
             android:id="@+id/manualIDGen"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Manually add a new ID value" />
+            android:text="@string/manually_add_a_n_new_id_value" />
     </LinearLayout>
 
 </LinearLayout>

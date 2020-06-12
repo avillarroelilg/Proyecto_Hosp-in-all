@@ -25,7 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Name"
+        android:hint="@string/name"
         android:inputType="textPersonName"
         android:paddingLeft="10dp"
         android:paddingRight="10dp" />
@@ -45,7 +45,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Password"
+        android:hint="@string/password"
         android:inputType="textPassword"
         android:paddingLeft="10dp"
         android:paddingRight="10dp" />
@@ -64,7 +64,7 @@
             android:id="@+id/btn_logIn"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="Log in" />
+            android:text="@string/log_in" />
 
         <Space
             android:layout_width="20dp"
@@ -74,7 +74,7 @@
             android:id="@+id/btn_logOut"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="Log out" />
+            android:text="@string/log_out" />
     </LinearLayout>
 
 </LinearLayout>

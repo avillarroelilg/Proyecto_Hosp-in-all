@@ -35,7 +35,7 @@
                 android:layout_marginRight="15dp"
                 android:layout_weight="1"
                 android:background="@drawable/round_red"
-                android:text="Red" />
+                android:text="@string/red" />
 
 
             <Button
@@ -45,7 +45,7 @@
                 android:layout_marginLeft="15dp"
                 android:layout_weight="1"
                 android:background="@drawable/round_blue"
-                android:text="Blue" />
+                android:text="@string/blue" />
 
         </LinearLayout>
 
@@ -64,7 +64,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/round_yellow"
                 android:radius="30dp"
-                android:text="Yellow" />
+                android:text="@string/yellow" />
 
 
             <Button
@@ -74,7 +74,7 @@
                 android:layout_marginLeft="15dp"
                 android:layout_weight="1"
                 android:background="@drawable/round_green"
-                android:text="Green" />
+                android:text="@string/green" />
 
         </LinearLayout>
 
@@ -86,21 +86,6 @@
         android:layout_weight="15"
         android:paddingBottom="10dp">
 
-<!--
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:clickable="true"
-            app:srcCompat="@drawable/imagesneatgif" />
-
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/logomiray" /> -->
     </LinearLayout>
 
 </LinearLayout>
