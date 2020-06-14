@@ -40,9 +40,15 @@
     <string name="patient_alarm">Patient Alarm</string>
     <string name="pref_string">Usuario y configuración de la base de datos</string>
     <string name="mess_ques">La %s ha sido seleccionada, por favor confirma tu elección.</string>
-    <string name="sent">\" enviado\"</string>
+    <string name="sent">enviado</string>
     <string name="active_patient_alarms">Alarmas Activas Pacientes</string>
     <string name="bb">Aplicación desfijada</string>
     <string name="send">Enviar</string>
     <string name="cancel">Cancelar</string>
+    <string name="bathroom_n_call">Llamada\n baño</string>
+    <string name="request_n_doctor">Solicitar\n doctor</string>
+    <string name="medicine_n_reminder">Recordatorio\n medicamento</string>
+    <string name="emergency">Emergencia</string>
+    <string name="welcome_to_the_hosp_in_all_app">Bienvenido a la aplicación Hosp-in-all</string>
+    <string name="emergency_alarm">Alarma de emergencia</string>
 </resources>

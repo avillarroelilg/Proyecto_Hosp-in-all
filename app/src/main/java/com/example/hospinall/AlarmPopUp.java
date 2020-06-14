@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.BatteryManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -60,7 +61,11 @@ public class AlarmPopUp extends AppCompatActivity implements View.OnClickListene
         int width = displayMetrics.widthPixels;
         int height = displayMetrics.heightPixels;
 
-        getWindow().setLayout((int)(width*.8),(int)(height*.6));
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            getWindow().setLayout((int)(width*.8),(int)(height*.6));
+        } else {
+            getWindow().setLayout((int)(width*.9),(int)(height*.8));
+        }
 
         SharedPreferences prefs = this.getSharedPreferences(
                 "com.example.newentry", Context.MODE_PRIVATE);
@@ -98,7 +103,7 @@ public class AlarmPopUp extends AppCompatActivity implements View.OnClickListene
                     prefs.edit().putString("alarmComment", alarmCommentStr).apply();
                     sendWarningToFirebase(alarmCodeColor, alarmCommentStr);
                     // prefs.edit().putString("alarmConfirm?","confirmed").apply();
-                    Toast.makeText(this, alarmCodeColor + getString(R.string.sent), Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, alarmCodeColor + " " + getString(R.string.sent), Toast.LENGTH_LONG).show();
                     finish();
                     break;
                 case R.id.cancell:
@@ -112,7 +117,21 @@ public class AlarmPopUp extends AppCompatActivity implements View.OnClickListene
                     prefs.edit().putString("alarmComment", alarmCommentStr).apply();
                     sendPatientWarningToFirebase(alarmCodeColor, alarmCommentStr);
                     // prefs.edit().putString("alarmConfirm?","confirmed").apply();
-                    Toast.makeText(this,alarmCodeColor + getString(R.string.sent), Toast.LENGTH_LONG).show();
+                    Toast.makeText(this,alarmCodeColor + " " + getString(R.string.sent), Toast.LENGTH_LONG).show();
+                    finish();
+                    break;
+                case R.id.cancell:
+                    //prefs.edit().putString("alarmConfirm?","denied").apply();
+                    finish();
+                    break;
+            }
+        } else if (Objects.equals(alarmType, "Unregistered")){
+            switch (v.getId()) {
+                case R.id.confirm:
+                    prefs.edit().putString("alarmComment", alarmCommentStr).apply();
+                    sendUnregisteredWarningToFirebase(alarmCodeColor, alarmCommentStr);
+                    // prefs.edit().putString("alarmConfirm?","confirmed").apply();
+                    Toast.makeText(this,alarmCodeColor +" "+ getString(R.string.sent), Toast.LENGTH_LONG).show();
                     finish();
                     break;
                 case R.id.cancell:
@@ -181,6 +200,48 @@ public class AlarmPopUp extends AppCompatActivity implements View.OnClickListene
         tabletName = sharedPreferences.getString("tabletName", "Tablet B1");
         idDevice = sharedPreferences.getString("tabletID", "0");
         username = sharedPreferences.getString("ActiveUser", null);
+        reff = FirebaseDatabase.getInstance().getReference().child("Patient Warnings").child(timeDisplayDay()).child("Log " + timeDisplayHours());
+        reffActiveAlarms = FirebaseDatabase.getInstance().getReference().child("Active Patient Warnings").child("ID " + idDevice);
+
+        //crea objeto alarma medica
+        alarmasMedic.setNom_tablet(tabletName);
+        alarmasMedic.setID_tablet(idDevice);
+        alarmasMedic.setTipo_Alarma(typeOfWarning);
+        alarmasMedic.setTime(timeDisplay());
+        alarmasMedic.setNom_user(username);
+        alarmasMedic.setDescription(alarmCommentStr);
+
+        //crea objeto device manager
+        deviceManager.setDevice_charger(batteryConnected);
+        deviceManager.setLast_check(timeDisplay());
+        deviceManager.setApp_status("Open App");
+        //stopLockTask();
+
+        reffDevicesWar = FirebaseDatabase.getInstance().getReference().child("Other Warnings").child(tabletName);
+        reffDevicesWar.setValue(null);
+/*
+        BatteryManager bm = getParentActivityIntent().getSystemService(BATTERY_SERVICE);
+        int percentage = bm.getIntProperty(BatteryManager.BATTERY_PROPERTY_CAPACITY);
+*/
+        CheckingBattery(60);
+
+        reffDevices = FirebaseDatabase.getInstance().getReference().child("Devices Status").child(tabletName);
+
+        reffDevices.setValue(deviceManager);
+        reff.setValue(alarmasMedic);
+        reffActiveAlarms.setValue(alarmasMedic);
+    }
+
+    private void sendUnregisteredWarningToFirebase(String typeOfWarning,String alarmCommentStr) {
+
+        SharedPreferences prefs = this.getSharedPreferences("com.example.newentry", Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String database = sharedPreferences.getString("name_db", "Database");
+        int actualBattery = prefs.getInt("percentageBattery", -1);
+        String batteryConnected = prefs.getString("chargerConnected", "defaultStringIfNothingFound");
+        tabletName = sharedPreferences.getString("tabletName", "Tablet B1");
+        idDevice = sharedPreferences.getString("tabletID", "0");
+        username = sharedPreferences.getString("ActiveUser", "Unregistered");
         reff = FirebaseDatabase.getInstance().getReference().child("Patient Warnings").child(timeDisplayDay()).child("Log " + timeDisplayHours());
         reffActiveAlarms = FirebaseDatabase.getInstance().getReference().child("Active Patient Warnings").child("ID " + idDevice);
 

@@ -130,6 +130,9 @@ public class ListaAlarmasPacientes extends Fragment {
                         case "Bathroom Alarm":
                             alarmColor = R.drawable.bathroom_alarm;
                             break;
+                        case "Unregistered Alarm":
+                            alarmColor = R.drawable.unregistered_alarm;
+                            break;
                     }
                     listaWarnings.add(new Warnings(alarmColor, alarmType, idList.get(i),time,descrip));
 

@@ -44,10 +44,16 @@
     <string name="patient_alarms">Patient Alarms</string>
     <string name="pref_string">User and database\'s configuration</string>
     <string name="mess_ques">The %s has been selected, please confirm your choice.</string>
-    <string name="sent">\" sent\"</string>
+    <string name="sent">sent</string>
     <string name="active_patient_alarms">Active Patient Alarms</string>
     <string name="bb">Unpinned App</string>
     <string name="send">Send</string>
     <string name="cancel">Cancel</string>
+    <string name="bathroom_n_call">Bathroom\n call</string>
+    <string name="request_n_doctor">Request\n doctor</string>
+    <string name="medicine_n_reminder">Medicine\n reminder</string>
+    <string name="emergency">Emergency</string>
+    <string name="welcome_to_the_hosp_in_all_app">Welcome to the Hosp-in-all app</string>
+    <string name="emergency_alarm">Emergency alarm</string>
 </resources>
 

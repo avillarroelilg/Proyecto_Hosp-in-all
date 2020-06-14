@@ -3,12 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:paddingTop="20dp">
+    android:orientation="vertical">
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="10dp" />
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/welcome_to_the_hosp_in_all_app"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_weight="0.5" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -20,13 +37,13 @@
 
 
     <EditText
-        android:maxLines="1"
         android:id="@+id/edit_username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/name"
         android:inputType="textPersonName"
+        android:maxLines="1"
         android:paddingLeft="10dp"
         android:paddingRight="10dp" />
 
@@ -40,13 +57,13 @@
 
 
     <EditText
-        android:maxLines="1"
         android:id="@+id/edit_passwordUser"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/password"
         android:inputType="textPassword"
+        android:maxLines="1"
         android:paddingLeft="10dp"
         android:paddingRight="10dp" />
 
@@ -76,5 +93,26 @@
             android:layout_height="wrap_content"
             android:text="@string/log_out" />
     </LinearLayout>
-
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.5" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/unregistered_alarm"
+            android:background="@drawable/round_red"
+            android:text="@string/emergency_alarm" />
+        <Space
+            android:layout_width="20dp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.5" />
 </LinearLayout>

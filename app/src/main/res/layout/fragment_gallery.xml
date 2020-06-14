@@ -10,7 +10,21 @@
         android:layout_width="match_parent"
         android:layout_height="10dp"
         android:layout_weight="1"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/welcome_to_the_hosp_in_all_app"
+            android:textSize="18sp"/>
+    </LinearLayout>
 
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_weight="0.5"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -75,7 +89,7 @@
             android:text="@string/log_in" />
 
         <Space
-            android:layout_width="100dp"
+            android:layout_width="20dp"
             android:layout_height="wrap_content" />
 
         <Button
@@ -86,7 +100,25 @@
     </LinearLayout>
     <Space
         android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:layout_weight="2"/>
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/unregistered_alarm"
+            android:background="@drawable/round_red"
+            android:text="@string/emergency_alarm" />
+        <Space
+            android:layout_width="20dp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"/>
 
 </LinearLayout>

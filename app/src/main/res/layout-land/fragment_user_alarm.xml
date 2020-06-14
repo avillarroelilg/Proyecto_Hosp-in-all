@@ -9,7 +9,6 @@
     android:keepScreenOn="true"
     tools:context=".ui.useralarm.UserAlarmFragment">
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -20,9 +19,10 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="0dp"
             android:layout_gravity="center"
-            android:layout_margin="15dp">
+            android:layout_margin="15dp"
+            android:layout_weight="50">
 
             <Button
                 android:id="@+id/btn_bathroom"
@@ -47,8 +47,9 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="0dp"
             android:layout_margin="15dp"
+            android:layout_weight="50"
             android:gravity="center">
 
             <Button

@@ -1,6 +1,7 @@
 package com.example.hospinall.ui.login;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -18,6 +19,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.example.hospinall.AlarmPopUp;
 import com.example.hospinall.MainActivity;
 import com.example.hospinall.R;
 import com.google.android.material.navigation.NavigationView;
@@ -32,9 +34,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class LoginFragment extends Fragment {
+public class LoginFragment extends Fragment implements View.OnClickListener{
     EditText nombre, contrasenya;
-    Button signIn, signOut;
+    Button signIn, signOut, emergency;
     ImageView userImage;
     DatabaseReference reff;
     String passwordDB = "", usercheck;
@@ -60,6 +62,9 @@ public class LoginFragment extends Fragment {
         contrasenya = root.findViewById(R.id.edit_passwordUser);
         signIn = root.findViewById(R.id.btn_logIn);
         signOut = root.findViewById(R.id.btn_logOut);
+        emergency = root.findViewById(R.id.unregistered_alarm);
+
+        emergency.setOnClickListener(this);
 
         SharedPreferences prefs = getContext().getSharedPreferences("com.example.newentry", Context.MODE_PRIVATE);
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
@@ -200,4 +205,17 @@ public class LoginFragment extends Fragment {
         return root;
     }
 
+    @Override
+    public void onClick(View v) {
+        startActivity(new Intent(getContext(), AlarmPopUp.class));
+        SharedPreferences prefs = Objects.requireNonNull(getContext()).getSharedPreferences(
+                "com.example.newentry", Context.MODE_PRIVATE);
+        if (v.getId() == R.id.unregistered_alarm) {
+            Log.i("click", "Unregistered Test");
+            prefs.edit().putString("alarmCodeColor", "Unregistered Alarm").apply();
+            prefs.edit().putString("alarmType", "Unregistered").apply();
+        } else {
+            Log.i("click", "Unregistered ID");
+        }
+    }
 }

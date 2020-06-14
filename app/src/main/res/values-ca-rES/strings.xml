@@ -40,9 +40,15 @@
     <string name="patient_alarm">Patient Alarm</string>
     <string name="pref_string">Usuari i configuració de la base de dades</string>
     <string name="mess_ques">La %s ha sigut seleccionada, si us plau confirmeu l\'elecció.</string>
-    <string name="sent">\" enviat\"</string>
+    <string name="sent">enviat</string>
     <string name="active_patient_alarms">Alarmes Actives Pacients</string>
     <string name="bb">Aplicació desfixada</string>
     <string name="send">Enviar</string>
     <string name="cancel">Cancelar</string>
+    <string name="bathroom_n_call">Trucada\n bany</string>
+    <string name="request_n_doctor">Sol·licitar\n doctor</string>
+    <string name="medicine_n_reminder">Recordatori\n medicina</string>
+    <string name="emergency">Emergència</string>
+    <string name="welcome_to_the_hosp_in_all_app">Benvingut a l\'aplicació d\'Hosp-in-all</string>
+    <string name="emergency_alarm">Alarma d\'emergència</string>
 </resources>
