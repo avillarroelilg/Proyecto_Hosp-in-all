@@ -35,4 +35,14 @@
     <string name="url_database">URL base de datos :</string>
     <string name="open_preferences">Abrir preferencias</string>
     <string name="unpin_screen">Desfijar pantalla</string>
+    <string name="generate_hex_id">Generar ID Hex</string>
+    <string name="patient_alarms">Alarmas Pacientes</string>
+    <string name="patient_alarm">Patient Alarm</string>
+    <string name="pref_string">Usuario y configuración de la base de datos</string>
+    <string name="mess_ques">La %s ha sido seleccionada, por favor confirma tu elección.</string>
+    <string name="sent">\" enviado\"</string>
+    <string name="active_patient_alarms">Alarmas Activas Pacientes</string>
+    <string name="bb">Aplicación desfijada</string>
+    <string name="send">Enviar</string>
+    <string name="cancel">Cancelar</string>
 </resources>

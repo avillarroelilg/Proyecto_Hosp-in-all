@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Hosp-in-all</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -42,12 +43,13 @@
     <string name="unpin_screen">Unpin screen</string>
     <string name="generate_hex_id">Generate Hex ID</string>
     <string name="patient_alarms">Patient Alarms</string>
+    <string name="confirm_pop">The %s, has been selected, please confirm your choice.</string>
+    <string name="unpin_message">Unpinned App</string>
     <string name="pref_string">User and database\'s configuration</string>
     <string name="mess_ques">The %s has been selected, please confirm your choice.</string>
     <string name="sent">\" sent\"</string>
     <string name="active_patient_alarms">Active Patient Alarms</string>
-    <string name="bb">Unpinned App</string>
+    <string name="bb">Unpinned app</string>
     <string name="send">Send</string>
     <string name="cancel">Cancel</string>
 </resources>
-

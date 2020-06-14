@@ -125,16 +125,29 @@ public class LoginFragment extends Fragment {
                                     menu.findItem(R.id.nav_send).setVisible(true);
                                     menu.findItem(R.id.nav_share).setVisible(true);
                                     menu.findItem(R.id.nav_tools).setVisible(true);
+                                    menu.findItem(R.id.userAlarmFragment).setVisible(true);
+                                    menu.findItem(R.id.listaAlarmasPacientes).setVisible(true);
                                 } else if (userName.contains("Tech")) {
                                     menu.findItem(R.id.nav_home).setVisible(false);
                                     menu.findItem(R.id.nav_send).setVisible(false);
                                     menu.findItem(R.id.nav_share).setVisible(true);
                                     menu.findItem(R.id.nav_tools).setVisible(true);
+                                    menu.findItem(R.id.userAlarmFragment).setVisible(false);
+                                    menu.findItem(R.id.listaAlarmasPacientes).setVisible(false);
+                                } else if (userName.contains("Patient")){
+                                    menu.findItem(R.id.nav_home).setVisible(false);
+                                    menu.findItem(R.id.nav_send).setVisible(false);
+                                    menu.findItem(R.id.nav_share).setVisible(false);
+                                    menu.findItem(R.id.nav_tools).setVisible(false);
+                                    menu.findItem(R.id.userAlarmFragment).setVisible(true);
+                                    menu.findItem(R.id.listaAlarmasPacientes).setVisible(true);
                                 } else {
                                     menu.findItem(R.id.nav_home).setVisible(true);
                                     menu.findItem(R.id.nav_send).setVisible(true);
                                     menu.findItem(R.id.nav_share).setVisible(false);
                                     menu.findItem(R.id.nav_tools).setVisible(false);
+                                    menu.findItem(R.id.userAlarmFragment).setVisible(false);
+                                    menu.findItem(R.id.listaAlarmasPacientes).setVisible(true);
                                 }
                                 signIn.setEnabled(false);
                                 signOut.setEnabled(true);
@@ -172,6 +185,8 @@ public class LoginFragment extends Fragment {
                 menu.findItem(R.id.nav_send).setVisible(false);
                 menu.findItem(R.id.nav_share).setVisible(false);
                 menu.findItem(R.id.nav_tools).setVisible(false);
+                menu.findItem(R.id.userAlarmFragment).setVisible(false);
+                menu.findItem(R.id.listaAlarmasPacientes).setVisible(false);
                 signIn.setEnabled(true);
                 signOut.setEnabled(false);
                 nombre.setEnabled(true);

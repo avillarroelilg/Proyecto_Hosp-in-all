@@ -2,7 +2,7 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     android:keepScreenOn="true">
     <!--https://developer.android.com/guide/topics/ui/settings -->
-    <PreferenceCategory android:title="User and database's configuration">
+    <PreferenceCategory android:title="@string/pref_string">
 
         <EditTextPreference
             android:defaultValue="jdbc:jtds:sqlserver://192.168.10.104/"
@@ -22,6 +22,14 @@
             android:selectAllOnFocus="true"
             android:singleLine="true"
             android:title="Database's name" />
+
+      <!--  <ListPreference
+            android:key="pref_language"
+            android:title="App's language"
+            android:entries=""
+            android:entryValues=""
+            android:defaultValue=""
+            android:summary="" /> -->
 
 
 

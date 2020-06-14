@@ -58,10 +58,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         homeViewModel =
                 ViewModelProviders.of(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
-        root.findViewById(R.id.btn_blue).setOnClickListener(this::onClick);
-        root.findViewById(R.id.btn_green).setOnClickListener(this::onClick);
-        root.findViewById(R.id.btn_yellow).setOnClickListener(this::onClick);
-        root.findViewById(R.id.btn_red).setOnClickListener(this::onClick);
+        root.findViewById(R.id.btn_blue).setOnClickListener(this);
+        root.findViewById(R.id.btn_green).setOnClickListener(this);
+        root.findViewById(R.id.btn_yellow).setOnClickListener(this);
+        root.findViewById(R.id.btn_red).setOnClickListener(this);
         db_action.pruebas(getContext());
         return root;
 
@@ -105,12 +105,14 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 Log.i("click", "Blue test");
                 prefs.edit().putString("alarmCodeColor", "Blue Alarm").apply();
                 db_action.update_entry("Azul");
+                prefs.edit().putString("alarmType", "Doctor").apply();
                 break;
 
             case R.id.btn_green:
                 Log.i("click", "Green test");
                 prefs.edit().putString("alarmCodeColor", "Green Alarm").apply();
                 db_action.update_entry("Verde");
+                prefs.edit().putString("alarmType", "Doctor").apply();
 
                 break;
 
@@ -119,6 +121,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 Log.i("click", "Yellow test");
                 prefs.edit().putString("alarmCodeColor", "Yellow Alarm").apply();
                 db_action.create_entry("Amarilla");
+                prefs.edit().putString("alarmType", "Doctor").apply();
 
                 break;
 
@@ -127,6 +130,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 Log.i("click", "Red test");
                 prefs.edit().putString("alarmCodeColor", "Red Alarm").apply();
                 db_action.create_entry("Roja");
+                prefs.edit().putString("alarmType", "Doctor").apply();
+
                 break;
 
             default:

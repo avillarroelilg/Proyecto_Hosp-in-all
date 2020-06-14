@@ -4,10 +4,10 @@
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
-            <item
-                android:id="@+id/nav_gallery"
-                android:icon="@drawable/ic_person_black_24dp"
-                android:title="Log In" />
+        <item
+            android:id="@+id/nav_gallery"
+            android:icon="@drawable/ic_person_black_24dp"
+            android:title="Log In" />
 
         <item
             android:id="@+id/nav_home"
@@ -25,8 +25,15 @@
         <item
             android:id="@+id/nav_share"
             android:icon="@drawable/ic_cached_black_24dp"
-            android:title="Generate Hex ID" />
-
+            android:title="@string/generate_hex_id" />
+        <item
+            android:id="@+id/userAlarmFragment"
+            android:icon="@drawable/ic_local_hotel_black_24dp"
+            android:title="@string/patient_alarms" />
+        <item
+            android:id="@+id/listaAlarmasPacientes"
+            android:icon="@drawable/ic_add_alert_black_24dp"
+            android:title="@string/active_patient_alarms" />
     </group>
 
     <!--

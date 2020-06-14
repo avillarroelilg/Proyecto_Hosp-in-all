@@ -34,4 +34,18 @@
         android:name="com.example.hospinall.ui.send.SendFragment"
         android:label="@string/menu_send"
         tools:layout="@layout/fragment_send" />
+
+    <fragment
+        android:id="@+id/userAlarmFragment"
+        android:name="com.example.hospinall.ui.useralarm.UserAlarmFragment"
+        android:label="@string/patient_alarms"
+        tools:layout="@layout/fragment_user_alarm" />
+
+    <fragment
+        android:id="@+id/listaAlarmasPacientes"
+        android:name="com.example.hospinall.ListaAlarmasPacientes"
+        android:label="@string/active_patient_alarms"
+        tools:layout="@layout/fragment_lista_alarmas_pacientes" />
+
+
 </navigation>

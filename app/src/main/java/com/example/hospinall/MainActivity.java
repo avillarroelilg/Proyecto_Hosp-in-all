@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_gallery,
-                R.id.nav_tools, R.id.nav_share, R.id.nav_send)
+                R.id.nav_tools, R.id.nav_share, R.id.nav_send, R.id.userAlarmFragment, R.id.listaAlarmasPacientes)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -161,11 +161,15 @@ public class MainActivity extends AppCompatActivity {
             menu.findItem(R.id.nav_send).setVisible(false);
             menu.findItem(R.id.nav_share).setVisible(false);
             menu.findItem(R.id.nav_tools).setVisible(false);
+            menu.findItem(R.id.userAlarmFragment).setVisible(false);
+            menu.findItem(R.id.listaAlarmasPacientes).setVisible(false);
         } else {
             menu.findItem(R.id.nav_home).setVisible(true);
             menu.findItem(R.id.nav_send).setVisible(true);
             menu.findItem(R.id.nav_share).setVisible(true);
             menu.findItem(R.id.nav_tools).setVisible(true);
+            menu.findItem(R.id.userAlarmFragment).setVisible(true);
+            menu.findItem(R.id.listaAlarmasPacientes).setVisible(true);
         }
         db_action.create_entry_d("onStart");
     }

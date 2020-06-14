@@ -18,6 +18,8 @@ import com.example.hospinall.ui.home.HomeViewModel;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Objects;
+
 import static com.example.hospinall.UtilityClass.timeDisplay;
 import static com.example.hospinall.UtilityClass.timeDisplayDay;
 import static com.example.hospinall.UtilityClass.timeDisplayHours;
@@ -68,7 +70,7 @@ public class AlarmPopUp extends AppCompatActivity implements View.OnClickListene
         cancellButton = findViewById(R.id.cancell);
         alarmComment = findViewById(R.id.alarmComment);
         alarmMessage = findViewById(R.id.alarmMessage);
-        alarmMessage.setText(String.format("The %s, has been selected, please confirm your choice.", alarmType));
+        alarmMessage.setText(String.format(getString(R.string.mess_ques), alarmType));
         confirmButton.setOnClickListener(this);
         cancellButton.setOnClickListener(this);
 
@@ -85,21 +87,39 @@ public class AlarmPopUp extends AppCompatActivity implements View.OnClickListene
     public void onClick(View v) {
         SharedPreferences prefs = this.getSharedPreferences(
                 "com.example.newentry", Context.MODE_PRIVATE);
+        String alarmType;
         alarmCommentStr = alarmComment.getText().toString();
         prefs.edit().putString("alarmComment","DOOP").apply();
-
-        switch (v.getId()){
-            case R.id.confirm:
-                prefs.edit().putString("alarmComment",alarmCommentStr).apply();
-                sendWarningToFirebase(alarmType,alarmCommentStr);
-               // prefs.edit().putString("alarmConfirm?","confirmed").apply();
-                Toast.makeText(this, alarmType + " sent", Toast.LENGTH_LONG).show();
-                finish();
-                break;
-            case R.id.cancell:
-               //prefs.edit().putString("alarmConfirm?","denied").apply();
-                finish();
-                break;
+        alarmType = prefs.getString("alarmType",null);
+        String alarmCodeColor = prefs.getString("alarmCodeColor",null);
+        if (Objects.equals(alarmType, "Doctor")) {
+            switch (v.getId()) {
+                case R.id.confirm:
+                    prefs.edit().putString("alarmComment", alarmCommentStr).apply();
+                    sendWarningToFirebase(alarmCodeColor, alarmCommentStr);
+                    // prefs.edit().putString("alarmConfirm?","confirmed").apply();
+                    Toast.makeText(this, alarmCodeColor + getString(R.string.sent), Toast.LENGTH_LONG).show();
+                    finish();
+                    break;
+                case R.id.cancell:
+                    //prefs.edit().putString("alarmConfirm?","denied").apply();
+                    finish();
+                    break;
+            }
+        } else if (Objects.equals(alarmType, "Patient")){
+            switch (v.getId()) {
+                case R.id.confirm:
+                    prefs.edit().putString("alarmComment", alarmCommentStr).apply();
+                    sendPatientWarningToFirebase(alarmCodeColor, alarmCommentStr);
+                    // prefs.edit().putString("alarmConfirm?","confirmed").apply();
+                    Toast.makeText(this,alarmCodeColor + getString(R.string.sent), Toast.LENGTH_LONG).show();
+                    finish();
+                    break;
+                case R.id.cancell:
+                    //prefs.edit().putString("alarmConfirm?","denied").apply();
+                    finish();
+                    break;
+            }
         }
     }
 
@@ -120,6 +140,49 @@ public class AlarmPopUp extends AppCompatActivity implements View.OnClickListene
         username = sharedPreferences.getString("ActiveUser", null);
         reff = FirebaseDatabase.getInstance().getReference().child(database).child(timeDisplayDay()).child("Log " + timeDisplayHours());
         reffActiveAlarms = FirebaseDatabase.getInstance().getReference().child("Active Warnings").child("ID " + idDevice);
+
+        //crea objeto alarma medica
+        alarmasMedic.setNom_tablet(tabletName);
+        alarmasMedic.setID_tablet(idDevice);
+        alarmasMedic.setTipo_Alarma(typeOfWarning);
+        alarmasMedic.setTime(timeDisplay());
+        alarmasMedic.setNom_user(username);
+        alarmasMedic.setDescription(alarmCommentStr);
+
+        //crea objeto device manager
+        deviceManager.setDevice_charger(batteryConnected);
+        deviceManager.setLast_check(timeDisplay());
+        deviceManager.setApp_status("Open App");
+        //stopLockTask();
+
+        reffDevicesWar = FirebaseDatabase.getInstance().getReference().child("Other Warnings").child(tabletName);
+        reffDevicesWar.setValue(null);
+/*
+        BatteryManager bm = getParentActivityIntent().getSystemService(BATTERY_SERVICE);
+        int percentage = bm.getIntProperty(BatteryManager.BATTERY_PROPERTY_CAPACITY);
+*/
+        CheckingBattery(60);
+
+        reffDevices = FirebaseDatabase.getInstance().getReference().child("Devices Status").child(tabletName);
+
+        reffDevices.setValue(deviceManager);
+        reff.setValue(alarmasMedic);
+        reffActiveAlarms.setValue(alarmasMedic);
+    }
+
+
+    private void sendPatientWarningToFirebase(String typeOfWarning,String alarmCommentStr) {
+
+        SharedPreferences prefs = this.getSharedPreferences("com.example.newentry", Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String database = sharedPreferences.getString("name_db", "Database");
+        int actualBattery = prefs.getInt("percentageBattery", -1);
+        String batteryConnected = prefs.getString("chargerConnected", "defaultStringIfNothingFound");
+        tabletName = sharedPreferences.getString("tabletName", "Tablet B1");
+        idDevice = sharedPreferences.getString("tabletID", "0");
+        username = sharedPreferences.getString("ActiveUser", null);
+        reff = FirebaseDatabase.getInstance().getReference().child("Patient Warnings").child(timeDisplayDay()).child("Log " + timeDisplayHours());
+        reffActiveAlarms = FirebaseDatabase.getInstance().getReference().child("Active Patient Warnings").child("ID " + idDevice);
 
         //crea objeto alarma medica
         alarmasMedic.setNom_tablet(tabletName);
