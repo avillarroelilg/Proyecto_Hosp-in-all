@@ -12,7 +12,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
@@ -23,11 +22,9 @@ import com.example.hospinall.AlarmPopUp;
 import com.example.hospinall.AlarmasMedic;
 import com.example.hospinall.BatteryWarnings;
 import com.example.hospinall.DeviceManager;
-import com.example.hospinall.MainActivity;
 import com.example.hospinall.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.example.hospinall.webdb;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -50,7 +47,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     String tabletName;
     String username;
     String idDevice;
-    webdb db_action;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -62,7 +58,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         root.findViewById(R.id.btn_green).setOnClickListener(this);
         root.findViewById(R.id.btn_yellow).setOnClickListener(this);
         root.findViewById(R.id.btn_red).setOnClickListener(this);
-        db_action.pruebas(getContext());
         return root;
 
 
@@ -75,7 +70,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         alarmasMedic = new AlarmasMedic();
         deviceManager = new DeviceManager();
         batteryWarnings = new BatteryWarnings();
-        db_action = new webdb();
 
     }
 
@@ -104,14 +98,12 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             case R.id.btn_blue:
                 Log.i("click", "Blue test");
                 prefs.edit().putString("alarmCodeColor", "Blue Alarm").apply();
-                db_action.update_entry("Azul");
                 prefs.edit().putString("alarmType", "Doctor").apply();
                 break;
 
             case R.id.btn_green:
                 Log.i("click", "Green test");
                 prefs.edit().putString("alarmCodeColor", "Green Alarm").apply();
-                db_action.update_entry("Verde");
                 prefs.edit().putString("alarmType", "Doctor").apply();
 
                 break;
@@ -120,7 +112,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
                 Log.i("click", "Yellow test");
                 prefs.edit().putString("alarmCodeColor", "Yellow Alarm").apply();
-                db_action.create_entry("Amarilla");
                 prefs.edit().putString("alarmType", "Doctor").apply();
 
                 break;
@@ -129,7 +120,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
                 Log.i("click", "Red test");
                 prefs.edit().putString("alarmCodeColor", "Red Alarm").apply();
-                db_action.create_entry("Roja");
                 prefs.edit().putString("alarmType", "Doctor").apply();
 
                 break;

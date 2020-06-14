@@ -45,12 +45,12 @@ public class HexaFragment extends Fragment implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.randomIDGen:
 
-                Log.i("click", "Hex value generated");
+                Log.i("click", getString(R.string.hex_gener));
                 createHexadecimal();
                 break;
             case R.id.manualIDGen:
                 if (!hexadecimalCheck()) {
-                    Toast.makeText(getContext(), "The inserted value isn't Hexadecimal !", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), R.string.not_hex_warning, Toast.LENGTH_LONG).show();
                 } else {
                     String contenido = cajaHex.getText().toString().toUpperCase();
                     if (contenido.length() == 4) {
@@ -62,7 +62,7 @@ public class HexaFragment extends Fragment implements View.OnClickListener {
                         cajaHex.getText().clear();
 
                     } else {
-                        Toast.makeText(getContext(), "The Hexadecimal value must be 4 characters long !", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getContext(), R.string.hex_length, Toast.LENGTH_LONG).show();
                     }
                 }
             default:

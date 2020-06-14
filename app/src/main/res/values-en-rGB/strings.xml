@@ -58,4 +58,13 @@
     <string name="emergency">Emergency</string>
     <string name="welcome_to_the_hosp_in_all_app">Welcome to the Hosp-in-all app</string>
     <string name="emergency_alarm">Emergency alarm</string>
+    <string name="wrong_passwd">Wrong password</string>
+    <string name="login_completed">Log-In complete !</string>
+    <string name="empty_username">The username\'s empty</string>
+    <string name="user_logout">User logged out</string>
+    <string name="not_hex_warning">The inserted value isn\'t Hexadecimal !</string>
+    <string name="hex_gener">Hex value generated</string>
+    <string name="hex_length">The Hexadecimal value must be 4 characters long !</string>
+    <string name="unpinned_screen">Screen unpinned</string>
+    <string name="wrong_user">Wrong username</string>
 </resources>

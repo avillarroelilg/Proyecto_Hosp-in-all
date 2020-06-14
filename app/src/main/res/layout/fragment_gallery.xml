@@ -111,7 +111,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/unregistered_alarm"
             android:background="@drawable/round_red"
-            android:text="@string/emergency_alarm" />
+            android:text="@string/emergency_alarm"/>
         <Space
             android:layout_width="20dp"
             android:layout_height="wrap_content" />

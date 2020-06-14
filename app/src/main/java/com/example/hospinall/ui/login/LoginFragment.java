@@ -28,7 +28,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.example.hospinall.webdb;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,7 +44,6 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
     List<String> userList = new ArrayList<String>();
     private LoginViewModel loginViewModel;
     NavigationView navigationView;
-    webdb db_action;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -107,7 +105,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
                     }
                 }
                 if (!correctUser) {
-                    Toast.makeText(getContext(), "Wrong username", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), R.string.wrong_user, Toast.LENGTH_LONG).show();
                 } else {
                     reff.child(userName).addValueEventListener(new ValueEventListener() {
                         @Override
@@ -115,7 +113,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
                             passwordDB = Objects.requireNonNull(dataSnapshot.child("password").getValue()).toString();
 
                             if (passwordDB.equals(contrasenya.getText().toString())) {
-                                Toast.makeText(getContext(), "Log-In complete !", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getContext(), R.string.login_completed, Toast.LENGTH_LONG).show();
                                 SharedPreferences.Editor editor = prefs.edit();
                                 editor.putString("ActiveUser", userName);
                                 editor.apply();
@@ -146,7 +144,10 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
                                     menu.findItem(R.id.nav_tools).setVisible(false);
                                     menu.findItem(R.id.userAlarmFragment).setVisible(true);
                                     menu.findItem(R.id.listaAlarmasPacientes).setVisible(true);
-                                } else {
+                                } else if (userName.isEmpty()) {
+                                    Toast.makeText(getContext(), R.string.empty_username, Toast.LENGTH_LONG).show();
+
+                                } else{
                                     menu.findItem(R.id.nav_home).setVisible(true);
                                     menu.findItem(R.id.nav_send).setVisible(true);
                                     menu.findItem(R.id.nav_share).setVisible(false);
@@ -159,7 +160,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
                                 nombre.setEnabled(false);
                                 contrasenya.setEnabled(false);
                             } else {
-                                Toast.makeText(getContext(), "Wrong password", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getContext(), R.string.wrong_passwd, Toast.LENGTH_LONG).show();
                             }
                         }
 
@@ -169,7 +170,6 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
                         }
                     });
                     Log.d("sig In", userName + " ," + contrasenya.getText().toString());
-                    //userImage.setImageResource(R.drawable.ic_person_black_24dp);
 
                 }
             }
@@ -196,12 +196,10 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
                 signOut.setEnabled(false);
                 nombre.setEnabled(true);
                 contrasenya.setEnabled(true);
-                Toast.makeText(getContext(), "User logged out", Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), R.string.user_logout, Toast.LENGTH_LONG).show();
 
             }
         });
-        db_action = new webdb();
-        db_action.pruebas(getContext());
         return root;
     }
 

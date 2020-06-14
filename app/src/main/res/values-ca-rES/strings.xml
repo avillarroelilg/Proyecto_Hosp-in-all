@@ -51,4 +51,13 @@
     <string name="emergency">Emergència</string>
     <string name="welcome_to_the_hosp_in_all_app">Benvingut a l\'aplicació d\'Hosp-in-all</string>
     <string name="emergency_alarm">Alarma d\'emergència</string>
+    <string name="wrong_passwd">Contrasenya incorrecta</string>
+    <string name="login_completed">S\'ha iniciat sessió correctament</string>
+    <string name="empty_username">El nom d\'usuari està buit</string>
+    <string name="user_logout">L\'usuari ha tancat sessió</string>
+    <string name="not_hex_warning">El valor insertat no és hexadecimal !</string>
+    <string name="hex_gener">Valor hexadecimal generat</string>
+    <string name="hex_length">El valor hexadecimal ha de ser de 4 caràcters !</string>
+    <string name="unpinned_screen">Pantalla desfixada</string>
+    <string name="wrong_user">Usuari incorrecte</string>
 </resources>

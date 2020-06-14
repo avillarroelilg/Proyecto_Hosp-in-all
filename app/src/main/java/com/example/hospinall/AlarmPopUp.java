@@ -39,7 +39,6 @@ public class AlarmPopUp extends AppCompatActivity implements View.OnClickListene
     String tabletName;
     String username;
     String idDevice;
-    webdb db_action;
     Button confirmButton,cancellButton;
     TextView alarmMessage;
     EditText alarmComment;
@@ -53,7 +52,6 @@ public class AlarmPopUp extends AppCompatActivity implements View.OnClickListene
         alarmasMedic = new AlarmasMedic();
         deviceManager = new DeviceManager();
         batteryWarnings = new BatteryWarnings();
-        db_action = new webdb();
 
 
         DisplayMetrics displayMetrics = new DisplayMetrics();

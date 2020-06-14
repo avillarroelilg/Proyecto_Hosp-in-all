@@ -17,15 +17,6 @@
             android:id="@+id/nav_send"
             android:icon="@drawable/alarm_bell_blue_24dp"
             android:title="@string/menu_send" />
-
-        <item
-            android:id="@+id/nav_tools"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="@string/menu_tools" />
-        <item
-            android:id="@+id/nav_share"
-            android:icon="@drawable/ic_cached_black_24dp"
-            android:title="@string/generate_hex_id" />
         <item
             android:id="@+id/userAlarmFragment"
             android:icon="@drawable/ic_local_hotel_black_24dp"
@@ -34,6 +25,15 @@
             android:id="@+id/listaAlarmasPacientes"
             android:icon="@drawable/ic_add_alert_black_24dp"
             android:title="@string/active_patient_alarms" />
+        <item
+            android:id="@+id/nav_share"
+            android:icon="@drawable/ic_cached_black_24dp"
+            android:title="@string/generate_hex_id" />
+        <item
+            android:id="@+id/nav_tools"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="@string/menu_tools" />
+
     </group>
 
     <!--

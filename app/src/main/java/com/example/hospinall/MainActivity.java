@@ -67,7 +67,6 @@ public class MainActivity extends AppCompatActivity {
     String idDevice;
     Integer logComplete;
 
-    webdb db_action;
 
     private AppBarConfiguration mAppBarConfiguration;
 
@@ -82,10 +81,7 @@ public class MainActivity extends AppCompatActivity {
         deviceManager = new DeviceManager();
         batteryWarnings = new BatteryWarnings();
 
-        //XAMPP connection
-        db_action = new webdb();
         Context context = getApplicationContext();
-        db_action.pruebas(context);
 
         //Battery intent and screen pin
         //All is Horizontal
@@ -171,7 +167,6 @@ public class MainActivity extends AppCompatActivity {
             menu.findItem(R.id.userAlarmFragment).setVisible(true);
             menu.findItem(R.id.listaAlarmasPacientes).setVisible(true);
         }
-        db_action.create_entry_d("onStart");
     }
 
     @Override
@@ -179,7 +174,6 @@ public class MainActivity extends AppCompatActivity {
         super.onStop();
 
         changeStatus("Paused App");
-        db_action.update_entry_d("onStop");
 
 
     }
@@ -187,7 +181,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        db_action.update_entry_d("onDestroy");
     }
 
     @Override
@@ -244,9 +237,18 @@ public class MainActivity extends AppCompatActivity {
     public void setImageView() {
         String mDrawableName = prefs.getString("ActiveUser", "def");
         int resID = Resources.getSystem().getIdentifier(mDrawableName, "drawable", "android");
-        imageView.setImageResource(resID);
+        assert mDrawableName != null;
+        if (mDrawableName.contains("Admin")){
+            imageView.setImageResource(R.drawable.admin_icon);
+        } else if (mDrawableName.contains("Tech")){
+            imageView.setImageResource(R.drawable.tech_icon);
+        } else if (mDrawableName.contains("Patient")){
+            imageView.setImageResource(R.drawable.patient_icon);
+        } else if (mDrawableName.contains("Doct")){
+            imageView.setImageResource(R.drawable.doctor_icon);
+        }
         headerText.setText(mDrawableName);
-        subheaderText.setText(mDrawableName.toLowerCase());
+        subheaderText.setText(String.format("%s@gmail.com", mDrawableName.toLowerCase()));
     }
 
     /**
