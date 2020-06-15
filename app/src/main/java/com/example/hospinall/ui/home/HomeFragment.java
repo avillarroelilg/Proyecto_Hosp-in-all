@@ -131,23 +131,13 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         }
     }
 
+    /**
+     * Displays the time day format.
+     * @return
+     */
     public static String timeDisplay() {
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss dd-MM-yyy");
-        String currentDate = format.format(calendar.getTime());
-        return currentDate;
-    }
-
-    public static String timeDisplayDay() {
-        Calendar calendar = Calendar.getInstance();
-        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyy");
-        String currentDate = format.format(calendar.getTime());
-        return currentDate;
-    }
-
-    public static String timeDisplayHours() {
-        Calendar calendar = Calendar.getInstance();
-        SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
         String currentDate = format.format(calendar.getTime());
         return currentDate;
     }

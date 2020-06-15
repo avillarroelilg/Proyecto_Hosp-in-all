@@ -1,11 +1,8 @@
 package com.example.hospinall;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
-import android.os.BatteryManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.DisplayMetrics;
@@ -14,6 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.hospinall.ui.home.HomeViewModel;
 import com.google.firebase.database.DatabaseReference;
@@ -100,12 +99,10 @@ public class AlarmPopUp extends AppCompatActivity implements View.OnClickListene
                 case R.id.confirm:
                     prefs.edit().putString("alarmComment", alarmCommentStr).apply();
                     sendWarningToFirebase(alarmCodeColor, alarmCommentStr);
-                    // prefs.edit().putString("alarmConfirm?","confirmed").apply();
                     Toast.makeText(this, alarmCodeColor + " " + getString(R.string.sent), Toast.LENGTH_LONG).show();
                     finish();
                     break;
                 case R.id.cancell:
-                    //prefs.edit().putString("alarmConfirm?","denied").apply();
                     finish();
                     break;
             }
@@ -114,12 +111,10 @@ public class AlarmPopUp extends AppCompatActivity implements View.OnClickListene
                 case R.id.confirm:
                     prefs.edit().putString("alarmComment", alarmCommentStr).apply();
                     sendPatientWarningToFirebase(alarmCodeColor, alarmCommentStr);
-                    // prefs.edit().putString("alarmConfirm?","confirmed").apply();
                     Toast.makeText(this, alarmCodeColor + " " + getString(R.string.sent), Toast.LENGTH_LONG).show();
                     finish();
                     break;
                 case R.id.cancell:
-                    //prefs.edit().putString("alarmConfirm?","denied").apply();
                     finish();
                     break;
             }
@@ -128,12 +123,10 @@ public class AlarmPopUp extends AppCompatActivity implements View.OnClickListene
                 case R.id.confirm:
                     prefs.edit().putString("alarmComment", alarmCommentStr).apply();
                     sendUnregisteredWarningToFirebase(alarmCodeColor, alarmCommentStr);
-                    // prefs.edit().putString("alarmConfirm?","confirmed").apply();
                     Toast.makeText(this, alarmCodeColor + " " + getString(R.string.sent), Toast.LENGTH_LONG).show();
                     finish();
                     break;
                 case R.id.cancell:
-                    //prefs.edit().putString("alarmConfirm?","denied").apply();
                     finish();
                     break;
             }
@@ -175,10 +168,7 @@ public class AlarmPopUp extends AppCompatActivity implements View.OnClickListene
 
         reffDevicesWar = FirebaseDatabase.getInstance().getReference().child("Other Warnings").child(tabletName);
         reffDevicesWar.setValue(null);
-/*
-        BatteryManager bm = getParentActivityIntent().getSystemService(BATTERY_SERVICE);
-        int percentage = bm.getIntProperty(BatteryManager.BATTERY_PROPERTY_CAPACITY);
-*/
+
         CheckingBattery(60);
 
         reffDevices = FirebaseDatabase.getInstance().getReference().child("Devices Status").child(tabletName);
@@ -188,6 +178,12 @@ public class AlarmPopUp extends AppCompatActivity implements View.OnClickListene
         reffActiveAlarms.setValue(alarmasMedic);
     }
 
+    /**
+     * Sends the information of the patient warning to the database.
+     *
+     * @param typeOfWarning   The type of the sent warning.
+     * @param alarmCommentStr The optional comment on the reason from said button press or any extra information for the alarm.
+     */
 
     private void sendPatientWarningToFirebase(String typeOfWarning, String alarmCommentStr) {
 
@@ -218,10 +214,7 @@ public class AlarmPopUp extends AppCompatActivity implements View.OnClickListene
 
         reffDevicesWar = FirebaseDatabase.getInstance().getReference().child("Other Warnings").child(tabletName);
         reffDevicesWar.setValue(null);
-/*
-        BatteryManager bm = getParentActivityIntent().getSystemService(BATTERY_SERVICE);
-        int percentage = bm.getIntProperty(BatteryManager.BATTERY_PROPERTY_CAPACITY);
-*/
+
         CheckingBattery(60);
 
         reffDevices = FirebaseDatabase.getInstance().getReference().child("Devices Status").child(tabletName);
@@ -231,6 +224,11 @@ public class AlarmPopUp extends AppCompatActivity implements View.OnClickListene
         reffActiveAlarms.setValue(alarmasMedic);
     }
 
+    /**
+     * Sends an unregistered warning to the database
+     * @param typeOfWarning The type of warning.
+     * @param alarmCommentStr The optional comment on the reason from said button press or any extra information for the alarm.
+     */
     private void sendUnregisteredWarningToFirebase(String typeOfWarning, String alarmCommentStr) {
 
         SharedPreferences prefs = this.getSharedPreferences("com.example.newentry", Context.MODE_PRIVATE);
@@ -260,10 +258,7 @@ public class AlarmPopUp extends AppCompatActivity implements View.OnClickListene
 
         reffDevicesWar = FirebaseDatabase.getInstance().getReference().child("Other Warnings").child(tabletName);
         reffDevicesWar.setValue(null);
-/*
-        BatteryManager bm = getParentActivityIntent().getSystemService(BATTERY_SERVICE);
-        int percentage = bm.getIntProperty(BatteryManager.BATTERY_PROPERTY_CAPACITY);
-*/
+
         CheckingBattery(60);
 
         reffDevices = FirebaseDatabase.getInstance().getReference().child("Devices Status").child(tabletName);

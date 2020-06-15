@@ -8,10 +8,8 @@ import android.content.SharedPreferences;
 import android.os.BatteryManager;
 import android.widget.Toast;
 
-//import com.google.firebase.database.DatabaseReference;
 
 
-//import static com.example.hospinall.ui.home.HomeFragment.timeDisplay;
 
 public class PlugInControlReceiver extends BroadcastReceiver {
     public PlugInControlReceiver() {
@@ -21,7 +19,6 @@ public class PlugInControlReceiver extends BroadcastReceiver {
     public boolean batteryCharging;
     public Integer batteryLvl;
     DeviceManager deviceManager;
-    //DatabaseReference reffDevices;
     private final String ACTION_SHUTDOWN = "ACTION_SHUTDOWN";
 
 

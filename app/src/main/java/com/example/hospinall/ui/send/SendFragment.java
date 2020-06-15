@@ -38,9 +38,6 @@ public class SendFragment extends Fragment {
     private RecyclerView.LayoutManager lManager;
     DatabaseReference reff;
     DatabaseReference reffInner;
-    String idTablet;
-    String timestamp;
-    String alarmType;
 
     List<String> idList = new ArrayList<String>();
     List<String> timeList = new ArrayList<String>();
@@ -53,7 +50,6 @@ public class SendFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_send, container, false);
 
         reff = FirebaseDatabase.getInstance().getReference().child("Active Warnings");
-        // idTablet = (Objects.requireNonNull(reff.getKey())).substring((reff.getKey()).indexOf(' ') + 1);
         List<String> testList = new ArrayList<>();
         listaWarnings = new ArrayList<Warnings>();
 

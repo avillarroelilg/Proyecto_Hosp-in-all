@@ -53,10 +53,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         loginViewModel =
                 ViewModelProviders.of(this).get(LoginViewModel.class);
         View root = inflater.inflate(R.layout.fragment_gallery, container, false);
-        // View main = inflater.inflate(R.layout.content_main, container, false);
         nombre = root.findViewById(R.id.edit_username);
-        // userImage = root.findViewById(R.id.imageView);
-        // navigationView = main.findViewById(R.id.nav_view);
         navigationView = Objects.requireNonNull(getActivity()).findViewById(R.id.nav_view);
         contrasenya = root.findViewById(R.id.edit_passwordUser);
         signIn = root.findViewById(R.id.btn_logIn);
@@ -118,8 +115,6 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
                                 SharedPreferences.Editor editor = prefs.edit();
                                 editor.putString("ActiveUser", userName);
                                 editor.apply();
-                                //   nombre.getText().clear();
-                                //   contrasenya.getText().clear();
                                 MainActivity mainActivity = new MainActivity();
                                 mainActivity.setImageView();
                                 prefs.edit().putString("loggedIn", "logged").apply();
