@@ -32,6 +32,7 @@ public class UtilityClass {
         String currentDate = format.format(calendar.getTime());
         return currentDate;
     }
+
     public static boolean isPlugged(Context context) {
         boolean isPlugged = false;
         Intent intent = context.registerReceiver(null, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
@@ -43,7 +44,7 @@ public class UtilityClass {
         return isPlugged;
     }
 
-   // public void lockEscape() {stopLockTask();}
+    // public void lockEscape() {stopLockTask();}
 
 
 }

@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
@@ -33,7 +34,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class LoginFragment extends Fragment implements View.OnClickListener{
+public class LoginFragment extends Fragment implements View.OnClickListener {
     EditText nombre, contrasenya;
     Button signIn, signOut, emergency;
     ImageView userImage;
@@ -137,7 +138,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
                                     menu.findItem(R.id.nav_tools).setVisible(true);
                                     menu.findItem(R.id.userAlarmFragment).setVisible(false);
                                     menu.findItem(R.id.listaAlarmasPacientes).setVisible(false);
-                                } else if (userName.contains("Patient")){
+                                } else if (userName.contains("Patient")) {
                                     menu.findItem(R.id.nav_home).setVisible(false);
                                     menu.findItem(R.id.nav_send).setVisible(false);
                                     menu.findItem(R.id.nav_share).setVisible(false);
@@ -147,7 +148,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
                                 } else if (userName.isEmpty()) {
                                     Toast.makeText(getContext(), R.string.empty_username, Toast.LENGTH_LONG).show();
 
-                                } else{
+                                } else {
                                     menu.findItem(R.id.nav_home).setVisible(true);
                                     menu.findItem(R.id.nav_send).setVisible(true);
                                     menu.findItem(R.id.nav_share).setVisible(false);
@@ -216,4 +217,5 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
             Log.i("click", "Unregistered ID");
         }
     }
+
 }

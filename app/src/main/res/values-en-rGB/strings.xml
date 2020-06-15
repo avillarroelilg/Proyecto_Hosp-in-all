@@ -33,12 +33,12 @@
     <string name="insert_a_new_id">Insert a new ID</string>
     <string name="generate_a_n_random_id_value">Generate a\n random ID value</string>
     <string name="manually_add_a_n_new_id_value">Manually add a\n new ID value</string>
-    <string name="id">ID :</string>
-    <string name="user">User :</string>
-    <string name="device_s_name">Device\'s name :</string>
-    <string name="device_s_id">Device\'s ID :</string>
-    <string name="database_s_name">Database\'s name :</string>
-    <string name="url_database">URL Database :</string>
+    <string name="id">ID : </string>
+    <string name="user">User : </string>
+    <string name="device_s_name">Device\'s name : </string>
+    <string name="device_s_id">Device\'s ID : </string>
+    <string name="database_s_name">Database\'s name : </string>
+    <string name="url_database">URL Database : </string>
     <string name="open_preferences">Open preferences</string>
     <string name="unpin_screen">Unpin screen</string>
     <string name="generate_hex_id">Generate Hex ID</string>
@@ -67,4 +67,12 @@
     <string name="hex_length">The Hexadecimal value must be 4 characters long !</string>
     <string name="unpinned_screen">Screen unpinned</string>
     <string name="wrong_user">Wrong username</string>
+    <string name="charger_connected">Charger connected </string>
+    <string name="charger_disc">Charger disconnected </string>
+    <string name="night_theme">Night theme</string>
+    <string name="light_theme">Light theme</string>
+    <string name="current_theme">Current theme: </string>
+    <string name="devi_name">Device\'s name</string>
+    <string name="db_name">Database\'s name</string>
+    <string name="app_them">App theme</string>
 </resources>

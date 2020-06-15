@@ -115,8 +115,8 @@ public class ListaAlarmasPacientes extends Fragment {
                 for (int i = 0; i < idList.size(); i++) {
                     String alarmType = Objects.requireNonNull(dataSnapshot.child(idList.get(i)).child("tipo_Alarma").getValue()).toString();
                     int alarmColor = 0;
-                    String time =  Objects.requireNonNull(dataSnapshot.child(idList.get(i)).child("time").getValue()).toString();
-                    String descrip =  Objects.requireNonNull(dataSnapshot.child(idList.get(i)).child("description").getValue()).toString();
+                    String time = Objects.requireNonNull(dataSnapshot.child(idList.get(i)).child("time").getValue()).toString();
+                    String descrip = Objects.requireNonNull(dataSnapshot.child(idList.get(i)).child("description").getValue()).toString();
                     switch (alarmType) {
                         case "Doctor Request Alarm":
                             alarmColor = R.drawable.doct_alert;
@@ -134,7 +134,7 @@ public class ListaAlarmasPacientes extends Fragment {
                             alarmColor = R.drawable.unregistered_alarm;
                             break;
                     }
-                    listaWarnings.add(new Warnings(alarmColor, alarmType, idList.get(i),time,descrip));
+                    listaWarnings.add(new Warnings(alarmColor, alarmType, idList.get(i), time, descrip));
 
                 }
 

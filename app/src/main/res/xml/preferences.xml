@@ -5,32 +5,32 @@
     <PreferenceCategory android:title="@string/pref_string">
 
         <EditTextPreference
-            android:defaultValue="jdbc:jtds:sqlserver://192.168.10.104/"
-            android:key="url_db"
-            android:selectAllOnFocus="true"
-            android:singleLine="true"
-            android:title="Database's URL" />
-        <EditTextPreference
             android:defaultValue="DefaultTabletName"
             android:key="tabletName"
             android:selectAllOnFocus="true"
             android:singleLine="true"
-            android:title="Device's name" />
+            android:title="@string/devi_name" />
         <EditTextPreference
             android:defaultValue="Hosp-in-all DB"
             android:key="name_db"
             android:selectAllOnFocus="true"
             android:singleLine="true"
-            android:title="Database's name" />
+            android:title="@string/db_name" />
 
-      <!--  <ListPreference
-            android:key="pref_language"
-            android:title="App's language"
-            android:entries=""
-            android:entryValues=""
-            android:defaultValue=""
-            android:summary="" /> -->
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="app_theme"
+            android:summaryOff="@string/light_theme"
+            android:summaryOn="@string/night_theme"
+            android:title="@string/app_them" />
 
+        <!--  <ListPreference
+              android:key="pref_language"
+              android:title="App's language"
+              android:entries=""
+              android:entryValues=""
+              android:defaultValue=""
+              android:summary="" /> -->
 
 
         <!--   <EditTextPreference

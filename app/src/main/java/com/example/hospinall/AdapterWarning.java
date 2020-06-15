@@ -44,7 +44,7 @@ public class AdapterWarning extends RecyclerView.Adapter<AdapterWarning.UsuarioV
     public class UsuarioViewHolder extends RecyclerView.ViewHolder {
 
         ImageView ivIcon;
-        TextView tvAlarmType, tvDeviceID, tvTime,tvDescrip;
+        TextView tvAlarmType, tvDeviceID, tvTime, tvDescrip;
 
         public UsuarioViewHolder(@NonNull View itemView) {
             super(itemView);

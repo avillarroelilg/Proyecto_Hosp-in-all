@@ -39,7 +39,7 @@ public class AlarmPopUp extends AppCompatActivity implements View.OnClickListene
     String tabletName;
     String username;
     String idDevice;
-    Button confirmButton,cancellButton;
+    Button confirmButton, cancellButton;
     TextView alarmMessage;
     EditText alarmComment;
     String alarmType, alarmCommentStr;
@@ -60,15 +60,15 @@ public class AlarmPopUp extends AppCompatActivity implements View.OnClickListene
         int height = displayMetrics.heightPixels;
 
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            getWindow().setLayout((int)(width*.8),(int)(height*.6));
+            getWindow().setLayout((int) (width * .8), (int) (height * .6));
         } else {
-            getWindow().setLayout((int)(width*.9),(int)(height*.8));
+            getWindow().setLayout((int) (width * .9), (int) (height * .8));
         }
 
         SharedPreferences prefs = this.getSharedPreferences(
                 "com.example.newentry", Context.MODE_PRIVATE);
 
-        alarmType = prefs.getString("alarmCodeColor","");
+        alarmType = prefs.getString("alarmCodeColor", "");
         confirmButton = findViewById(R.id.confirm);
         cancellButton = findViewById(R.id.cancell);
         alarmComment = findViewById(R.id.alarmComment);
@@ -78,11 +78,11 @@ public class AlarmPopUp extends AppCompatActivity implements View.OnClickListene
         cancellButton.setOnClickListener(this);
 
 
-
     }
 
     /**
      * This onClick method manages the options of the pop-up window when clicking a button.
+     *
      * @param v View.
      */
 
@@ -92,9 +92,9 @@ public class AlarmPopUp extends AppCompatActivity implements View.OnClickListene
                 "com.example.newentry", Context.MODE_PRIVATE);
         String alarmType;
         alarmCommentStr = alarmComment.getText().toString();
-        prefs.edit().putString("alarmComment","DOOP").apply();
-        alarmType = prefs.getString("alarmType",null);
-        String alarmCodeColor = prefs.getString("alarmCodeColor",null);
+        prefs.edit().putString("alarmComment", "DOOP").apply();
+        alarmType = prefs.getString("alarmType", null);
+        String alarmCodeColor = prefs.getString("alarmCodeColor", null);
         if (Objects.equals(alarmType, "Doctor")) {
             switch (v.getId()) {
                 case R.id.confirm:
@@ -109,13 +109,13 @@ public class AlarmPopUp extends AppCompatActivity implements View.OnClickListene
                     finish();
                     break;
             }
-        } else if (Objects.equals(alarmType, "Patient")){
+        } else if (Objects.equals(alarmType, "Patient")) {
             switch (v.getId()) {
                 case R.id.confirm:
                     prefs.edit().putString("alarmComment", alarmCommentStr).apply();
                     sendPatientWarningToFirebase(alarmCodeColor, alarmCommentStr);
                     // prefs.edit().putString("alarmConfirm?","confirmed").apply();
-                    Toast.makeText(this,alarmCodeColor + " " + getString(R.string.sent), Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, alarmCodeColor + " " + getString(R.string.sent), Toast.LENGTH_LONG).show();
                     finish();
                     break;
                 case R.id.cancell:
@@ -123,13 +123,13 @@ public class AlarmPopUp extends AppCompatActivity implements View.OnClickListene
                     finish();
                     break;
             }
-        } else if (Objects.equals(alarmType, "Unregistered")){
+        } else if (Objects.equals(alarmType, "Unregistered")) {
             switch (v.getId()) {
                 case R.id.confirm:
                     prefs.edit().putString("alarmComment", alarmCommentStr).apply();
                     sendUnregisteredWarningToFirebase(alarmCodeColor, alarmCommentStr);
                     // prefs.edit().putString("alarmConfirm?","confirmed").apply();
-                    Toast.makeText(this,alarmCodeColor +" "+ getString(R.string.sent), Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, alarmCodeColor + " " + getString(R.string.sent), Toast.LENGTH_LONG).show();
                     finish();
                     break;
                 case R.id.cancell:
@@ -142,10 +142,11 @@ public class AlarmPopUp extends AppCompatActivity implements View.OnClickListene
 
     /**
      * Sends the information of the clicked warning to the database.
-     * @param typeOfWarning The color of the sent warning.
+     *
+     * @param typeOfWarning   The color of the sent warning.
      * @param alarmCommentStr The optional comment on the reason from said button press or any extra information for the alarm.
      */
-    private void sendWarningToFirebase(String typeOfWarning,String alarmCommentStr) {
+    private void sendWarningToFirebase(String typeOfWarning, String alarmCommentStr) {
 
         SharedPreferences prefs = this.getSharedPreferences("com.example.newentry", Context.MODE_PRIVATE);
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
@@ -188,7 +189,7 @@ public class AlarmPopUp extends AppCompatActivity implements View.OnClickListene
     }
 
 
-    private void sendPatientWarningToFirebase(String typeOfWarning,String alarmCommentStr) {
+    private void sendPatientWarningToFirebase(String typeOfWarning, String alarmCommentStr) {
 
         SharedPreferences prefs = this.getSharedPreferences("com.example.newentry", Context.MODE_PRIVATE);
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
@@ -230,7 +231,7 @@ public class AlarmPopUp extends AppCompatActivity implements View.OnClickListene
         reffActiveAlarms.setValue(alarmasMedic);
     }
 
-    private void sendUnregisteredWarningToFirebase(String typeOfWarning,String alarmCommentStr) {
+    private void sendUnregisteredWarningToFirebase(String typeOfWarning, String alarmCommentStr) {
 
         SharedPreferences prefs = this.getSharedPreferences("com.example.newentry", Context.MODE_PRIVATE);
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
@@ -274,6 +275,7 @@ public class AlarmPopUp extends AppCompatActivity implements View.OnClickListene
 
     /**
      * Checks the battery % of the user's device. If it is below or equal to 30%, a "Low battery" warning will be sent to the database.
+     *
      * @param battPercentage The battery % of the device.
      */
 

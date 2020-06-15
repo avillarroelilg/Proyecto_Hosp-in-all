@@ -7,7 +7,7 @@
         <item
             android:id="@+id/nav_gallery"
             android:icon="@drawable/ic_person_black_24dp"
-            android:title="Log In" />
+            android:title="@string/menu_gallery" />
 
         <item
             android:id="@+id/nav_home"
@@ -36,15 +36,4 @@
 
     </group>
 
-    <!--
-    <item android:title="Communicate">
-        <menu>
-
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/alarm_bell_blue_24dp"
-                android:title="@string/menu_send" />
-        </menu>
-    </item>
--->
 </menu>

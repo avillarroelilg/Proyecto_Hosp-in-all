@@ -154,6 +154,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
     /**
      * Checks the battery % of the user's device. If it is below or equal to 30%, a "Low battery" warning will be sent to the database.
+     *
      * @param battPercentage The battery % of the device.
      */
 
@@ -174,6 +175,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
     /**
      * Checks if the device is plugged.
+     *
      * @param context Context
      * @return If the device is plugged or not.
      */

@@ -31,7 +31,6 @@ public class HexaFragment extends Fragment implements View.OnClickListener {
         View root = inflater.inflate(R.layout.fragment_share, container, false);
         cajaHex = root.findViewById(R.id.insertarID);
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-        // cajaHex.setText(sharedPreferences.getString("tabletID", "0"));
         root.findViewById(R.id.randomIDGen).setOnClickListener(this);
         root.findViewById(R.id.manualIDGen).setOnClickListener(this);
         ID = root.findViewById(R.id.id_disp);
@@ -68,7 +67,6 @@ public class HexaFragment extends Fragment implements View.OnClickListener {
             default:
                 Log.i("click", "Unregistered onclick");
                 break;
-
         }
     }
 
@@ -91,6 +89,7 @@ public class HexaFragment extends Fragment implements View.OnClickListener {
 
     /**
      * Checks if the number given by the user is Hexadecimal.
+     *
      * @return The number's Hexadecimal or not.
      */
     private Boolean hexadecimalCheck() {

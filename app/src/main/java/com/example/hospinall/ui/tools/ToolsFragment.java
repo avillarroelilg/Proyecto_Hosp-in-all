@@ -13,9 +13,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.example.hospinall.MainActivity;
 import com.example.hospinall.Preferences;
 import com.example.hospinall.R;
 
@@ -25,8 +27,9 @@ public class ToolsFragment extends Fragment {
 
     private ToolsViewModel toolsViewModel;
     Button openPreferences, stopLock;
-    String usuarioText, dbName, dbUrlText, dispText, dispIDText;
+    String usuarioText, dbName, dispText, dispIDText;
     TextView usuario, nombre_database, url_database, nombre_dispositivo, id_dispositivo;
+    Boolean dbUrlText;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -70,17 +73,28 @@ public class ToolsFragment extends Fragment {
         super.onStart();
         SharedPreferences prefs = Objects.requireNonNull(getContext()).getSharedPreferences("com.example.newentry", Context.MODE_PRIVATE);
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-
+        Boolean Nightmode = sharedPreferences.getBoolean("app_theme", false);
+        if (!Nightmode) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        }
+        MainActivity mainActivity = new MainActivity();
+        mainActivity.setImageView();
         usuarioText = prefs.getString("ActiveUser", null);
-        dbName = sharedPreferences.getString("name_db", null);
-        dbUrlText = sharedPreferences.getString("url_db", null);
-        dispText = sharedPreferences.getString("tabletName", null);
-        dispIDText = sharedPreferences.getString("tabletID", null);
+        dbName = sharedPreferences.getString("name_db", "Hosp-in-all DB");
+        dbUrlText = sharedPreferences.getBoolean("app_theme", false);
+        dispText = sharedPreferences.getString("tabletName", "DefaultTabletName");
+        dispIDText = sharedPreferences.getString("tabletID", "0");
 
 
         usuario.setText(usuarioText);
+        if (dbUrlText) {
+            url_database.setText(R.string.night_theme);
+        } else {
+            url_database.setText(R.string.light_theme);
+        }
         nombre_database.setText(dbName);
-        url_database.setText(dbUrlText);
         nombre_dispositivo.setText(dispText);
         id_dispositivo.setText(dispIDText);
 

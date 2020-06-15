@@ -93,24 +93,29 @@
             android:layout_height="wrap_content"
             android:text="@string/log_out" />
     </LinearLayout>
+
     <Space
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="0.5" />
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end">
+
         <Button
+            android:id="@+id/unregistered_alarm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/unregistered_alarm"
             android:background="@drawable/round_red"
             android:text="@string/emergency_alarm" />
+
         <Space
             android:layout_width="20dp"
             android:layout_height="wrap_content" />
     </LinearLayout>
+
     <Space
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

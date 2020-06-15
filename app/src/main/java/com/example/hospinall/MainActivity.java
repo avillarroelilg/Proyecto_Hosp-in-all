@@ -21,6 +21,7 @@ import android.os.PowerManager;
 import android.preference.PreferenceManager;
 import android.view.View;
 
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -39,6 +40,8 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.util.Objects;
 
 import static com.example.hospinall.ui.home.HomeFragment.isPlugged;
 import static com.example.hospinall.ui.home.HomeFragment.timeDisplay;
@@ -83,10 +86,6 @@ public class MainActivity extends AppCompatActivity {
 
         Context context = getApplicationContext();
 
-        //Battery intent and screen pin
-        //All is Horizontal
-        //setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
@@ -104,8 +103,16 @@ public class MainActivity extends AppCompatActivity {
         headerText = (TextView) header.findViewById(R.id.navHeader);
         subheaderText = (TextView) header.findViewById(R.id.navHeaderSub);
         prefs = this.getSharedPreferences("com.example.newentry", Context.MODE_PRIVATE);
-        prefs.edit().putString("loggedIn", "notLogged").apply();
-        context = this;
+        Boolean darkmode = prefs.getBoolean("app_theme", false);
+        if (!darkmode) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        }
+        if (savedInstanceState == null) {
+            prefs.edit().putString("loggedIn", "notLogged").apply();
+            removeImageView();
+        }
     }
 
     /**
@@ -152,6 +159,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences prefs = this.getSharedPreferences(
                 "com.example.newentry", Context.MODE_PRIVATE);
         String user = prefs.getString("loggedIn", "notLogged");
+        String username = prefs.getString("ActiveUser", "notLogged");
         if (user.equals("notLogged")) {
             menu.findItem(R.id.nav_home).setVisible(false);
             menu.findItem(R.id.nav_send).setVisible(false);
@@ -159,14 +167,22 @@ public class MainActivity extends AppCompatActivity {
             menu.findItem(R.id.nav_tools).setVisible(false);
             menu.findItem(R.id.userAlarmFragment).setVisible(false);
             menu.findItem(R.id.listaAlarmasPacientes).setVisible(false);
-        } else {
+        } else if (username.contains("Admin")) {
             menu.findItem(R.id.nav_home).setVisible(true);
             menu.findItem(R.id.nav_send).setVisible(true);
             menu.findItem(R.id.nav_share).setVisible(true);
             menu.findItem(R.id.nav_tools).setVisible(true);
             menu.findItem(R.id.userAlarmFragment).setVisible(true);
             menu.findItem(R.id.listaAlarmasPacientes).setVisible(true);
+        } else if (username.contains("Tech")) {
+            menu.findItem(R.id.nav_home).setVisible(false);
+            menu.findItem(R.id.nav_send).setVisible(false);
+            menu.findItem(R.id.nav_share).setVisible(true);
+            menu.findItem(R.id.nav_tools).setVisible(true);
+            menu.findItem(R.id.userAlarmFragment).setVisible(false);
+            menu.findItem(R.id.listaAlarmasPacientes).setVisible(false);
         }
+
     }
 
     @Override
@@ -180,6 +196,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
+        prefs = this.getSharedPreferences("com.example.newentry", Context.MODE_PRIVATE);
+        prefs.edit().putBoolean("app_theme", false).apply();
         super.onDestroy();
     }
 
@@ -212,6 +230,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Checks the battery % of the user's device. If it is below or equal to 30%, a "Low battery" warning will be sent to the database.
+     *
      * @param battPercentage The battery % of the device.
      */
 
@@ -238,13 +257,13 @@ public class MainActivity extends AppCompatActivity {
         String mDrawableName = prefs.getString("ActiveUser", "def");
         int resID = Resources.getSystem().getIdentifier(mDrawableName, "drawable", "android");
         assert mDrawableName != null;
-        if (mDrawableName.contains("Admin")){
+        if (mDrawableName.contains("Admin")) {
             imageView.setImageResource(R.drawable.admin_icon);
-        } else if (mDrawableName.contains("Tech")){
+        } else if (mDrawableName.contains("Tech")) {
             imageView.setImageResource(R.drawable.tech_icon);
-        } else if (mDrawableName.contains("Patient")){
+        } else if (mDrawableName.contains("Patient")) {
             imageView.setImageResource(R.drawable.patient_icon);
-        } else if (mDrawableName.contains("Doct")){
+        } else if (mDrawableName.contains("Doct")) {
             imageView.setImageResource(R.drawable.doctor_icon);
         }
         headerText.setText(mDrawableName);
@@ -271,6 +290,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Checks if the app is in Lock Task mode
+     *
      * @return
      */
     public boolean isAppInLockTaskMode() {
@@ -291,5 +311,17 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return false;
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        String user = prefs.getString("loggedIn", "notLogged");
+        outState.putString("isUserLogged", user);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
     }
 }

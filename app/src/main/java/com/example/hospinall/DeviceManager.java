@@ -23,7 +23,6 @@ public class DeviceManager {
     }
 
 
-
     public String getApp_status() {
         return App_status;
     }

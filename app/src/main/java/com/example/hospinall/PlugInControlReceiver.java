@@ -44,7 +44,7 @@ public class PlugInControlReceiver extends BroadcastReceiver {
             prefs.edit().putString("chargerConnected", "Conectado").apply();
 
             int actualBattery = prefs.getInt("percentageBattery", -1);
-            Toast.makeText(context, "Cargador conectado " + actualBattery + "%", Toast.LENGTH_LONG).show();
+            Toast.makeText(context, context.getString(R.string.charger_connected) + " " + actualBattery + "%", Toast.LENGTH_LONG).show();
 
         } else if (action.equals(Intent.ACTION_POWER_DISCONNECTED)) {
             IntentFilter ifilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
@@ -62,7 +62,7 @@ public class PlugInControlReceiver extends BroadcastReceiver {
             prefs.edit().putString("chargerConnected", "Desconectado").apply();
 
             int actualBattery = prefs.getInt("percentageBattery", -1);
-            Toast.makeText(context, "Cargador desconectado " + actualBattery + "%", Toast.LENGTH_LONG).show();
+            Toast.makeText(context, context.getString(R.string.charger_disc) + " " + actualBattery + "%", Toast.LENGTH_LONG).show();
 
         } else if (action.equals(Intent.ACTION_BATTERY_LOW)) {
             IntentFilter ifilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
@@ -75,7 +75,7 @@ public class PlugInControlReceiver extends BroadcastReceiver {
 
             Toast.makeText(context, "Bateria baja " + batteryPct + "%", Toast.LENGTH_LONG).show();
 
-        } else if (action.equals(Intent.ACTION_BATTERY_CHANGED)){
+        } else if (action.equals(Intent.ACTION_BATTERY_CHANGED)) {
             IntentFilter ifilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
             Intent batteryStatus = context.registerReceiver(null, ifilter);
             int level = batteryStatus.getIntExtra(BatteryManager.EXTRA_LEVEL, -1);

@@ -73,8 +73,8 @@ public class SendFragment extends Fragment {
                 for (int i = 0; i < idList.size(); i++) {
                     String alarmType = Objects.requireNonNull(dataSnapshot.child(idList.get(i)).child("tipo_Alarma").getValue()).toString();
                     int alarmColor = 0;
-                    String time =  Objects.requireNonNull(dataSnapshot.child(idList.get(i)).child("time").getValue()).toString();
-                    String descrip =  Objects.requireNonNull(dataSnapshot.child(idList.get(i)).child("description").getValue()).toString();
+                    String time = Objects.requireNonNull(dataSnapshot.child(idList.get(i)).child("time").getValue()).toString();
+                    String descrip = Objects.requireNonNull(dataSnapshot.child(idList.get(i)).child("description").getValue()).toString();
                     switch (alarmType) {
                         case "Blue Alarm":
                             alarmColor = R.drawable.alarm_bell_blue_24dp;
@@ -89,7 +89,7 @@ public class SendFragment extends Fragment {
                             alarmColor = R.drawable.alarm_bell_red_24dp;
                             break;
                     }
-                    listaWarnings.add(new Warnings(alarmColor, alarmType, idList.get(i),time,descrip));
+                    listaWarnings.add(new Warnings(alarmColor, alarmType, idList.get(i), time, descrip));
 
                 }
 
