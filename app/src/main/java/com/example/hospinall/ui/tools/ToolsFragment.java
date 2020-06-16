@@ -89,9 +89,9 @@ public class ToolsFragment extends Fragment {
 
 
         usuario.setText(usuarioText);
-        if (dbUrlText) {
+        if (dbUrlText && url_database != null) {
             url_database.setText(R.string.night_theme);
-        } else {
+        } else if (!dbUrlText && url_database !=null){
             url_database.setText(R.string.light_theme);
         }
         nombre_database.setText(dbName);
